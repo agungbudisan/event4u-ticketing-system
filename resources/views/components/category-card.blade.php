@@ -1,6 +1,6 @@
-<div class="md:w-48 flex flex-col ">
-    <div class="w-full aspect-square">
-        <img src="{{ $image }}" class="w-full h-full object-cover rounded" alt="{{ $title }}">
+<div class="flex flex-col md:w-48">
+    <div class="aspect-square w-full overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white p-2 shadow-sm">
+        <img src="{{ $image }}" class="h-full w-full rounded-xl object-cover transition duration-300 hover:scale-105" alt="{{ $title }}">
     </div>
-    <p class="text-xl text-center font-bold mt-2">{{ $title }}</p>
+    <p class="mt-3 text-center text-lg font-bold">{{ $title }}</p>
 </div>

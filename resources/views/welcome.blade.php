@@ -7,22 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-[#F8F4EC] text-[#211F1C] font-sans">
 
     <!-- Navbar -->
     @include('components.navbar')
 
     <!-- Main Content -->
-    <main class="container mx-auto mt-4 px-4 lg:px-6">
+    <main class="container mx-auto mt-5 px-4 lg:px-6">
 
         <!-- Hero Section - Enhanced with better layout and animation -->
-        <section class="relative h-[400px] sm:h-[450px] md:h-[500px] bg-cover bg-center text-white rounded-xl overflow-hidden shadow-xl mb-12" style="background-image: url('/images/iklan.png');">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+        <section class="relative mb-16 min-h-[480px] overflow-hidden rounded-[2rem] bg-cover bg-center text-white shadow-[0_18px_50px_rgba(33,31,28,0.18)] sm:min-h-[540px]" style="background-image: url('/images/iklan.png');">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#211F1C]/90 via-[#211F1C]/55 to-transparent"></div>
+            <div class="absolute bottom-0 right-0 hidden h-44 w-44 translate-x-12 translate-y-12 rounded-full border-[18px] border-[#E15B3F]/40 md:block"></div>
             <div class="absolute inset-0 flex items-center">
-                <div class="ml-8 md:ml-16 max-w-lg p-6 rounded-lg animate-fadeIn">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Enjoy the Show</h1>
-                    <p class="text-xl mb-6 text-gray-100">Discover your next favorite event. Grab your seat in just a few clicks.</p>
-                    <a href="{{ route('events.index') }}" class="inline-block bg-[#7B0015] hover:bg-[#950019] text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                <div class="animate-fadeIn ml-7 max-w-xl p-5 sm:ml-12 md:ml-16 md:p-6">
+                    <p class="mb-5 text-xs font-bold uppercase tracking-[0.24em] text-[#F7ECAC]">Your next great memory</p>
+                    <h1 class="mb-5 max-w-lg text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl">Make room for something unforgettable.</h1>
+                    <p class="mb-8 max-w-md text-lg leading-relaxed text-white/80 sm:text-xl">Discover concerts, workshops, festivals, and more. Your next favorite event is closer than you think.</p>
+                    <a href="{{ route('events.index') }}" class="inline-flex items-center rounded-full bg-[#E15B3F] px-7 py-3.5 font-bold text-white shadow-lg transition-all hover:-translate-y-1 hover:bg-[#F06D50]">
                         Browse Events <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -32,11 +34,11 @@
         <!-- Event Recommendations - Added animations and improved card design -->
         <section class="mb-16">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold relative">
-                    Event Recommendations
-                    <span class="block h-1 w-24 bg-[#7B0015] mt-2"></span>
+                <div>
+                    <p class="section-kicker mb-2">Handpicked for you</p>
+                    <h2 class="section-title font-bold">Event Recommendations</h2>
                 </h2>
-                <a href="{{ route('events.index') }}" class="text-[#7B0015] hover:text-[#950019] font-semibold flex items-center">
+                <a href="{{ route('events.index') }}" class="flex items-center font-semibold text-[#7B0015] hover:text-[#E15B3F]">
                     View All <i class="fas fa-chevron-right ml-2"></i>
                 </a>
             </div>
@@ -56,7 +58,8 @@
 
         <!-- Top Events - Redesigned with hover effects -->
         <section class="mb-16 bg-gradient-to-r from-[#7B0015] to-[#AF0020] text-white p-8 rounded-xl shadow-lg">
-            <h2 class="text-3xl font-bold mb-8 flex items-center">
+            <p class="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#F7ECAC]/70">The crowd favourites</p>
+            <h2 class="mb-8 flex items-center text-3xl font-bold">
                 <i class="fas fa-crown mr-3 text-yellow-300"></i> Top Events
             </h2>
 
@@ -101,9 +104,9 @@
         <!-- Category - Redesigned with icons and better styling -->
         <section class="mb-16">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold relative">
-                    Categories
-                    <span class="block h-1 w-24 bg-[#7B0015] mt-2"></span>
+                        <div>
+                            <p class="section-kicker mb-2">Find your scene</p>
+                            <h2 class="section-title font-bold">Categories</h2>
                 </h2>
 
                 <div class="flex items-center">
@@ -118,8 +121,8 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
                 @forelse($categories as $category)
-                    <a href="{{ route('events.index', ['category_id' => $category->id]) }}" class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all transform hover:scale-105">
-                        <div class="h-36 bg-[#F3F4F6] flex items-center justify-center">
+                    <a href="{{ route('events.index', ['category_id' => $category->id]) }}" class="group overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+                        <div class="flex h-36 items-center justify-center bg-[#F1ECE3] transition-colors group-hover:bg-[#F7ECAC]/40">
                             @php
                                 // Logic untuk menentukan ikon berdasarkan nama kategori
                                 $name = strtolower($category->name);
@@ -149,7 +152,7 @@
                                 <img src="{{ asset('storage/' . $category->icon) }}" alt="{{ $category->name }}" class="h-24 w-24 object-contain">
                             @else
                                 <!-- Fallback ke Font Awesome icon -->
-                                <div class="h-24 w-24 rounded-full bg-[#7B0015] flex items-center justify-center text-white text-3xl">
+                                <div class="flex h-20 w-20 items-center justify-center rounded-full bg-[#7B0015] text-2xl text-white shadow-md">
                                     <i class="fas fa-{{ $icon }}"></i>
                                 </div>
                             @endif
@@ -183,22 +186,24 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="mb-16 bg-gradient-to-r from-[#7B0015] to-[#AF0020] text-white p-8 rounded-xl shadow-lg">
+        <section class="mb-16 overflow-hidden rounded-[2rem] bg-[#211F1C] p-8 text-white shadow-lg md:p-12">
+            <div class="relative z-10">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="mb-6 md:mb-0 md:mr-6">
                     <h2 class="text-3xl font-bold mb-4">Ready to Find Your Next Event?</h2>
                     <p class="text-lg opacity-90 max-w-lg">Discover amazing events happening around you. Purchase tickets easily and never miss out on exciting experiences!</p>
                 </div>
                 <div class="flex flex-col space-y-3">
-                    <a href="{{ route('events.index') }}" class="bg-white text-[#7B0015] hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-center transition-all transform hover:scale-105 shadow-lg">
+                    <a href="{{ route('events.index') }}" class="bg-[#F7ECAC] px-8 py-3 font-bold text-[#211F1C] shadow-lg transition-all hover:-translate-y-1 hover:bg-white">
                         Browse Events <i class="fas fa-search ml-2"></i>
                     </a>
                     @guest
-                    <a href="{{ route('register') }}" class="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold py-3 px-8 rounded-full text-center transition-all">
+                    <a href="{{ route('register') }}" class="border-2 border-white/40 px-8 py-3 text-center font-bold text-white transition-all hover:border-white hover:bg-white/10">
                         Create Account
                     </a>
                     @endguest
                 </div>
+            </div>
             </div>
         </section>
     </main>

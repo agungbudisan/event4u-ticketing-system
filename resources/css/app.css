@@ -1,3 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		--event-ink: #211f1c;
+		--event-wine: #7b0015;
+		--event-coral: #e15b3f;
+		--event-cream: #f8f4ec;
+		--event-line: #e9e1d5;
+	}
+
+	body {
+		background-color: var(--event-cream);
+		color: var(--event-ink);
+		font-family: 'DM Sans', sans-serif;
+	}
+
+	h1, h2, h3, h4 {
+		font-family: 'Space Grotesk', sans-serif;
+		letter-spacing: -0.02em;
+	}
+}
+
+@layer components {
+	.section-kicker {
+		color: var(--event-coral);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.section-title {
+		color: var(--event-ink);
+		font-size: clamp(1.75rem, 3vw, 2.5rem);
+		line-height: 1.05;
+	}
+
+	.section-title::after {
+		background-color: var(--event-coral);
+		content: '';
+		display: block;
+		height: 0.22rem;
+		margin-top: 0.75rem;
+		width: 3.5rem;
+	}
+}

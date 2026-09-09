@@ -641,24 +641,27 @@ class PaymentController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'Missing order_id'], 400);
             }
 
-            // Find payment by transaction ID
-            $payment = Payment::where('transaction_id', $orderId)->first();
+            $emailData = DB::transaction(function () use ($orderId, $paymentType, $transactionStatus, $notificationBody) {
+                // Lock the payment so repeated Midtrans notifications are idempotent.
+                $payment = Payment::where('transaction_id', $orderId)->lockForUpdate()->first();
 
-            if (!$payment) {
-                Log::error('Payment record not found for transaction_id: ' . $orderId);
-                return response()->json(['status' => 'error', 'message' => 'Payment not found'], 404);
-            }
+                if (!$payment) {
+                    Log::error('Payment record not found for transaction_id: ' . $orderId);
+                    return null;
+                }
 
-            $order = $payment->order;
-            if (!$order) {
-                Log::error('Order not found for payment ID: ' . $payment->id);
-                return response()->json(['status' => 'error', 'message' => 'Order not found'], 404);
-            }
+                $order = $payment->order()->with('ticket')->first();
+                if (!$order) {
+                    Log::error('Order not found for payment ID: ' . $payment->id);
+                    return null;
+                }
 
-            DB::beginTransaction();
-            try {
+                $shouldSendETicket = false;
+
                 // Simpan detail metode pembayaran
                 $payment->payment_method_detail = $paymentType;
+                $payment->payment_type = $paymentType;
+                $payment->payment_data = $notificationBody;
 
                 // Simpan instruksi pembayaran jika ada
                 if (isset($notificationBody['payment_instructions'])) {
@@ -686,12 +689,7 @@ class PaymentController extends Controller
                     if ($payment->getOriginal('status') !== 'completed') {
                         // Kurangi kuota tiket
                         $order->ticket->decrement('quota_avail', $order->quantity);
-
-                        // Kirim e-ticket
-                        $isGuest = $order->user_id === null;
-                        Mail::to($order->email)->send(new SendETicket($order, $isGuest));
-
-                        Log::info('E-ticket sent to ' . ($isGuest ? 'guest' : 'user') . ': ' . $order->email);
+                        $shouldSendETicket = true;
                     }
                 } elseif ($transactionStatus == 'pending') {
                     $payment->status = 'pending';
@@ -702,14 +700,34 @@ class PaymentController extends Controller
                 }
 
                 $payment->save();
-                DB::commit();
 
-                return response()->json(['status' => 'success']);
-            } catch (\Exception $e) {
-                DB::rollBack();
-                Log::error('Failed to process Midtrans notification: ' . $e->getMessage());
-                return response()->json(['status' => 'error', 'message' => $e->getMessage()], 500);
+                return [
+                    'order' => $order,
+                    'is_guest' => $order->user_id === null,
+                    'should_send_eticket' => $shouldSendETicket,
+                ];
+            });
+
+            if (!$emailData) {
+                return response()->json(['status' => 'error', 'message' => 'Payment or order not found'], 404);
             }
+
+            // Email delivery must not make the payment notification return HTTP 500.
+            if ($emailData['should_send_eticket']) {
+                try {
+                    Mail::to($emailData['order']->email)->send(
+                        new SendETicket($emailData['order'], $emailData['is_guest'])
+                    );
+                    Log::info('E-ticket sent to ' . ($emailData['is_guest'] ? 'guest' : 'user') . ': ' . $emailData['order']->email);
+                } catch (\Throwable $e) {
+                    Log::error('Payment completed but e-ticket email failed: ' . $e->getMessage(), [
+                        'order_id' => $orderId,
+                        'exception' => $e,
+                    ]);
+                }
+            }
+
+            return response()->json(['status' => 'success']);
         } catch (\Exception $e) {
             Log::error('Error processing Midtrans notification: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Server error'], 500);

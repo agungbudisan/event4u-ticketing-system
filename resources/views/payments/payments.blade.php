@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Event 4 U - Ticket Booking</title>
+    <title>Event4U - Ticket Booking</title>
     <style>
         body {
             margin: 0;
@@ -108,7 +108,7 @@
 <body>
 
 <header>
-    <div>Event 4 U</div>
+    <div>Event4U</div>
     <nav>
         <a href="#">Home</a>
         <a href="#">Category</a>

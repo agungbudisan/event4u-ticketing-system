@@ -6,7 +6,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Company Info -->
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Event 4 U</h3>
+                    <h3 class="text-xl font-bold mb-4">Event4U</h3>
                     <p class="text-white/80 mb-4">Discover your next favorite event. <br>Grab your seat in just a few clicks.</p>
                     <div class="flex space-x-4 mt-4">
                         <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">

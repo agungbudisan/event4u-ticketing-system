@@ -120,7 +120,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <h2>EVENT 4 U</h2>
+            <h2>EVENT4U</h2>
         </div>
 
         <div class="ticket">

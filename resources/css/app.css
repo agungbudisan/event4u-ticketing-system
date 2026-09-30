@@ -26,6 +26,37 @@
 }
 
 @layer components {
+	.admin-shell .text-gray-900,
+	.admin-shell .dark\:text-white {
+		color: #17212b !important;
+	}
+
+	.admin-shell .text-gray-800,
+	.admin-shell .text-gray-700,
+	.admin-shell .dark\:text-gray-300 {
+		color: #334155 !important;
+	}
+
+	.admin-shell .text-gray-600,
+	.admin-shell .text-gray-500,
+	.admin-shell .text-gray-400,
+	.admin-shell .dark\:text-gray-400 {
+		color: #52606d !important;
+	}
+
+	.admin-shell .border-gray-200,
+	.admin-shell .border-gray-300,
+	.admin-shell .dark\:border-gray-600,
+	.admin-shell .dark\:border-gray-700 {
+		border-color: #d9dee3 !important;
+	}
+
+	.admin-shell .dark\:bg-gray-800,
+	.admin-shell .dark\:bg-gray-700,
+	.admin-shell .dark\:bg-gray-600 {
+		background-color: #ffffff !important;
+	}
+
 	.section-kicker {
 		color: var(--event-coral);
 		font-size: 0.72rem;

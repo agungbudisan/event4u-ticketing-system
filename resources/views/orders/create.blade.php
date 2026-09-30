@@ -21,7 +21,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-[#F8F4EC] text-[#211F1C] font-sans">
 
     @include('components.navbar')
 

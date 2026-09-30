@@ -22,72 +22,66 @@
 
     @stack('styles')
 </head>
-<body class="font-sans antialiased" x-data="{
-    sidebarOpen: false,
-    darkMode: localStorage.getItem('darkMode') === 'true',
-    toggleDarkMode() {
-        this.darkMode = !this.darkMode;
-        localStorage.setItem('darkMode', this.darkMode);
-    }
-}" :class="{'dark': darkMode}">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
+<body class="admin-shell font-sans antialiased" x-data="{ sidebarOpen: false }">
+    <div class="min-h-screen bg-[#EEF1F4]">
         <!-- Sidebar -->
         <aside
             id="sidebar"
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
             class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform sm:translate-x-0"
             aria-label="Sidebar">
-            <div class="h-full px-3 py-4 overflow-y-auto bg-gray-800 dark:bg-gray-900 border-r border-gray-700 dark:border-gray-800">
-                <div class="flex items-center pl-2.5 mb-5">
-                    <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Event4U</span>
-                    <span class="ml-2 text-xs font-semibold text-gray-400">Admin</span>
+            <div class="h-full overflow-y-auto border-r border-[#0F151B] bg-[#17212B] px-3 py-4">
+                <div class="mb-8 flex items-center pl-2.5">
+                    <span class="mr-2 h-2.5 w-2.5 rounded-full bg-[#E15B3F]"></span>
+                    <span class="self-center whitespace-nowrap text-xl font-bold tracking-tight text-[#F8F4EC]">Event4U</span>
+                    <span class="ml-2 text-xs font-semibold text-[#F7ECAC]/70">Admin</span>
                 </div>
                 <ul class="space-y-2 font-medium">
                     <li>
-                        <a href="{{ route('admin.dashboard') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-tachometer-alt w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.dashboard') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.dashboard') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-tachometer-alt h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.events.index') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.events.*') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-calendar-alt w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.events.index') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.events.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-calendar-alt h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kelola Acara</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.categories.index') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.categories.*') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-tags w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.categories.index') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.categories.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-tags h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kelola Kategori</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.tickets.index', ['event' => 1]) }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.tickets.*') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-ticket-alt w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.tickets.index', ['event' => 1]) }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.tickets.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-ticket-alt h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kelola Tiket</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.orders.index') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.orders.*') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-shopping-cart w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.orders.index') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.orders.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-shopping-cart h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kelola Pesanan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.payments.index') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.payments.*') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-credit-card w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.payments.index') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.payments.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-credit-card h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kelola Pembayaran</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.analytics') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700 {{ request()->routeIs('admin.analytics') ? 'bg-gray-700' : '' }}">
-                            <i class="fas fa-chart-line w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                        <a href="{{ route('admin.analytics') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.analytics') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                            <i class="fas fa-chart-line h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Analitik</span>
                         </a>
                     </li>
-                    <li class="border-t border-gray-700 pt-2 mt-4">
-                        <a href="{{ route('welcome') }}" class="flex items-center p-2 text-gray-300 rounded-lg hover:bg-gray-700">
-                            <i class="fas fa-home w-6 h-6 text-gray-400 transition duration-75 group-hover:text-gray-300"></i>
+                    <li class="mt-4 border-t border-white/10 pt-2">
+                        <a href="{{ route('welcome') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white">
+                            <i class="fas fa-home h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kembali ke Beranda</span>
                         </a>
                     </li>
@@ -96,26 +90,21 @@
         </aside>
 
         <!-- Page Content -->
-        <div class="sm:ml-64 p-4">
+        <div class="p-4 sm:ml-64">
             <!-- Header -->
             <div class="flex justify-between items-center mb-6">
                 <div>
-                    <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $header ?? 'Admin Dashboard' }}</h1>
+                    <h1 class="text-2xl font-bold text-[#17212B] dark:text-white">{{ $header ?? 'Admin Dashboard' }}</h1>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <!-- Dark mode toggle -->
-                    <button @click="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200">
-                        <i class="fas" :class="darkMode ? 'fa-sun text-yellow-500' : 'fa-moon text-gray-500'"></i>
-                    </button>
-
                     <!-- Toggle sidebar on mobile -->
-                    <button @click="sidebarOpen = !sidebarOpen" class="sm:hidden inline-flex items-center p-2 text-sm rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none">
+                    <button @click="sidebarOpen = !sidebarOpen" class="inline-flex items-center rounded-xl p-2 text-sm hover:bg-white dark:hover:bg-gray-700 focus:outline-none sm:hidden">
                         <i class="fas fa-bars"></i>
                     </button>
 
                     <!-- Notifications dropdown -->
                     <div class="relative" x-data="{ open: false }">
-                        <button @click="open = !open" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 relative transition-colors duration-200">
+                        <button @click="open = !open" class="relative rounded-xl p-2 hover:bg-white dark:hover:bg-gray-700 transition-colors duration-200">
                             <i class="fas fa-bell text-gray-600 dark:text-gray-300"></i>
                             <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
                         </button>

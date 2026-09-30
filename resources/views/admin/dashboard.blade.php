@@ -4,52 +4,52 @@
 <!-- Summary Cards -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
     <!-- Total Events Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#7B0015]">
                 <i class="fas fa-calendar-alt text-white"></i>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Acara</p>
+                <p class="text-sm font-semibold text-[#52606D] dark:text-gray-400">Total Acara</p>
                 <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $totalEvents }}</p>
             </div>
         </div>
     </div>
 
     <!-- Upcoming Events Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#E15B3F]">
                 <i class="fas fa-hourglass-half text-white"></i>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Acara Mendatang</p>
+                <p class="text-sm font-semibold text-[#52606D] dark:text-gray-400">Acara Mendatang</p>
                 <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $upcomingEvents }}</p>
             </div>
         </div>
     </div>
 
     <!-- Categories Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#D1A83A]">
                 <i class="fas fa-tags text-white"></i>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Kategori</p>
+                <p class="text-sm font-semibold text-[#52606D] dark:text-gray-400">Kategori</p>
                 <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $categories }}</p>
             </div>
         </div>
     </div>
 
     <!-- Active Tickets Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
         <div class="flex items-center">
-            <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[#B7372B]">
                 <i class="fas fa-ticket-alt text-white"></i>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Tiket Aktif</p>
+                <p class="text-sm font-semibold text-[#52606D] dark:text-gray-400">Tiket Aktif</p>
                 <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $activeTickets }}</p>
             </div>
         </div>
@@ -57,14 +57,14 @@
 </div>
 
 <!-- Recent Events Table -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow mb-6">
+<div class="mb-6 overflow-hidden rounded-2xl border border-[#D9DEE3] bg-white shadow-sm dark:bg-gray-800">
     <div class="p-4 flex justify-between items-center border-b dark:border-gray-700">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Acara Terbaru</h2>
-        <a href="{{ route('admin.events.index') }}" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300">Lihat Semua</a>
+        <a href="{{ route('admin.events.index') }}" class="text-sm font-semibold text-[#7B0015] hover:text-[#E15B3F]">Lihat Semua</a>
     </div>
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-50 dark:bg-gray-700">
+            <thead class="bg-[#EEF1F4] dark:bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Judul</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Kategori</th>
@@ -89,7 +89,7 @@
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $event->start_event->format('d M Y, H:i') }}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <a href="{{ route('admin.events.show', $event) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 mr-3">Detail</a>
+                        <a href="{{ route('admin.events.show', $event) }}" class="mr-3 font-semibold text-[#7B0015] hover:text-[#E15B3F]">Detail</a>
                         <a href="{{ route('admin.events.edit', $event) }}" class="text-yellow-600 dark:text-yellow-500 hover:text-yellow-900 dark:hover:text-yellow-400">Edit</a>
                     </td>
                 </tr>
@@ -107,14 +107,14 @@
 
 <!-- Recent Orders Table -->
 @if(isset($recentOrders))
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow mb-6">
+<div class="mb-6 overflow-hidden rounded-2xl border border-[#D9DEE3] bg-white shadow-sm dark:bg-gray-800">
     <div class="p-4 flex justify-between items-center border-b dark:border-gray-700">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Pesanan Terbaru</h2>
-        <a href="{{ route('admin.orders.index') }}" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300">Lihat Semua</a>
+        <a href="{{ route('admin.orders.index') }}" class="text-sm font-semibold text-[#7B0015] hover:text-[#E15B3F]">Lihat Semua</a>
     </div>
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-50 dark:bg-gray-700">
+            <thead class="bg-[#EEF1F4] dark:bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acara</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tiket</th>
@@ -163,12 +163,20 @@
                                 }
                             }
                         @endphp
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-{{ $statusClass }}-100 text-{{ $statusClass }}-800 dark:bg-{{ $statusClass }}-800 dark:text-{{ $statusClass }}-200">
+                        @php
+                            $statusStyles = [
+                                'gray' => 'bg-[#E2E8F0] text-[#334155]',
+                                'yellow' => 'bg-[#FEF3C7] text-[#92400E]',
+                                'green' => 'bg-[#DCFCE7] text-[#166534]',
+                                'red' => 'bg-[#FEE2E2] text-[#991B1B]',
+                            ];
+                        @endphp
+                        <span class="inline-flex rounded-full px-2 py-1 text-xs font-semibold {{ $statusStyles[$statusClass] ?? $statusStyles['gray'] }}">
                             {{ $statusText }}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <a href="{{ route('admin.orders.show', $order) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300">Detail</a>
+                        <a href="{{ route('admin.orders.show', $order) }}" class="font-semibold text-[#7B0015] hover:text-[#E15B3F]">Detail</a>
                     </td>
                 </tr>
                 @empty
@@ -187,14 +195,14 @@
 <!-- Charts Section -->
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
     <!-- Category Distribution Chart -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Distribusi Kategori Acara</h2>
         <div id="category-chart" class="h-80"></div>
     </div>
 
     <!-- Monthly Sales Chart -->
     @if(isset($monthlySalesLabels) && isset($monthlySalesData))
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+    <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Penjualan Tiket Bulanan</h2>
         <div id="sales-chart" class="h-80"></div>
     </div>

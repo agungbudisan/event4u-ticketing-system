@@ -8,20 +8,20 @@
     <div class="flex space-x-4">
         {{-- Tombol Export ke Excel --}}
         <a href="{{ route('admin.analytics.exportExcel', ['eventId' => $event->id ?? null]) }}"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            class="rounded-full bg-[#2F855A] px-5 py-2.5 font-bold text-white shadow-sm transition-colors duration-300 hover:bg-[#276749] focus:outline-none">
             <i class="fas fa-file-excel mr-2"></i>Export to Excel
         </a>
 
         {{-- Tombol Export ke PDF --}}
         <a href="{{ route('admin.analytics.exportPdf', ['eventId' => $event->id ?? null]) }}"
-            class="px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-500">
+            class="rounded-full bg-[#7B0015] px-5 py-2.5 font-bold text-white shadow-sm transition-colors duration-300 hover:bg-[#E15B3F] focus:outline-none">
             <i class="fas fa-file-pdf mr-2"></i>Export to PDF
         </a>
     </div>
 
     <!-- Event Selector -->
     <div class="w-full md:w-auto">
-        <select id="eventSelect" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm" onchange="selectEvent(this.value)">
+        <select id="eventSelect" class="block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm" onchange="selectEvent(this.value)">
             <option value="">Pilih Acara</option>
             @foreach($events as $evt)
                 <option value="{{ $evt->id }}" {{ isset($event) && $event->id == $evt->id ? 'selected' : '' }}>
@@ -36,7 +36,7 @@
     <!-- Event Stats Overview -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <!-- Total Sales -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
             <div class="flex items-center">
                 <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                     <i class="fas fa-money-bill-wave text-white"></i>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Tickets Sold -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
             <div class="flex items-center">
                 <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
                     <i class="fas fa-ticket-alt text-white"></i>
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Event Category -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
             <div class="flex items-center">
                 <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
                     @if(isset($event->category) && isset($event->category->icon))
@@ -79,7 +79,7 @@
         </div>
 
         <!-- Event Date -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
             <div class="flex items-center">
                 <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center">
                     <i class="fas fa-calendar-alt text-white"></i>
@@ -94,13 +94,13 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <!-- Sales Chart -->
-        <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="lg:col-span-2 rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Penjualan Tiket per Jenis</h2>
             <div id="sales-chart" class="h-80"></div>
         </div>
 
         <!-- Ticket Type Breakdown -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <div class="rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Rincian Jenis Tiket</h2>
 
             @foreach($ticketTypes as $ticket)
@@ -109,8 +109,8 @@
                         <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ $ticket['name'] }}</span>
                         <span class="text-sm text-gray-500 dark:text-gray-400">{{ $ticket['sold'] }}/{{ $ticket['quota'] }}</span>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                        <div class="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-full" style="width: {{ $ticket['percentage'] }}%"></div>
+                    <div class="h-2.5 w-full rounded-full bg-[#D9DEE3] dark:bg-gray-700">
+                        <div class="h-2.5 rounded-full bg-[#E15B3F]" style="width: {{ $ticket['percentage'] }}%"></div>
                     </div>
                     <div class="flex justify-between items-center mt-1">
                         <span class="text-xs text-gray-500 dark:text-gray-400">{{ number_format($ticket['percentage'], 1) }}% terjual</span>
@@ -122,7 +122,7 @@
     </div>
 
     <!-- Detailed Ticket Sales Table -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden mb-6">
+    <div class="mb-6 overflow-hidden rounded-2xl border border-[#D9DEE3] bg-white shadow-sm dark:bg-gray-800">
         <div class="p-4 border-b dark:border-gray-700">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Detail Penjualan Tiket</h2>
         </div>

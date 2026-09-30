@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $event->title }} - Event 4 U</title>
+    <title>{{ $event->title }} - Event4U</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
@@ -20,12 +20,12 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans @auth user-authenticated @endauth">
+<body class="bg-[#F8F4EC] text-[#211F1C] font-sans @auth user-authenticated @endauth">
 
     @include('components.navbar')
 
     <main class="container mx-auto mb-16 mt-8 px-4 lg:px-6">
-        <div class="relative rounded-xl overflow-hidden shadow-xl mb-6 bg-gradient-to-r from-[#7B0015] to-[#AF0020]">
+        <div class="relative mb-8 overflow-hidden rounded-[2rem] bg-[#211F1C] shadow-[0_18px_50px_rgba(33,31,28,0.16)]">
             <!-- Header section with controlled height -->
             <div class="flex flex-col md:flex-row items-center">
                 <!-- Thumbnail dengan ukuran terkontrol di sisi kiri (hanya pada desktop) -->
@@ -49,7 +49,7 @@
                 <div class="p-6 md:p-8 {{ $event->thumbnail ? 'md:w-2/3' : 'w-full' }}">
                     <div>
                         <div class="flex items-start justify-between mb-4">
-                            <span class="inline-block bg-white/20 text-white text-xs px-2 py-1 rounded-full">
+                            <span class="inline-block rounded-full bg-white/10 px-3 py-1 text-xs text-white/80">
                                 {{ $event->category->name ?? 'Event' }}
                             </span>
 
@@ -61,14 +61,14 @@
                                 $isPast = $now > $event->end_event;
                             @endphp
 
-                            <span class="inline-block
+                            <span class="inline-block rounded-full
                                 {{ $isUpcoming ? 'bg-blue-600' : ($isOngoing ? 'bg-green-600' : 'bg-gray-600') }}
-                                text-white text-xs px-2 py-1 rounded">
+                                px-3 py-1 text-xs text-white">
                                 {{ $isUpcoming ? 'Akan Datang' : ($isOngoing ? 'Sedang Berlangsung' : 'Selesai') }}
                             </span>
                         </div>
 
-                        <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">{{ $event->title }}</h1>
+                        <h1 class="mb-3 text-3xl font-bold leading-tight text-white md:text-4xl">{{ $event->title }}</h1>
 
                         <div class="flex flex-wrap text-white/80 text-sm gap-4 mt-4">
                             <div class="flex items-center">
@@ -108,8 +108,8 @@
             <!-- Left Column - Event Details -->
             <div class="md:col-span-1 space-y-4">
                 <!-- Date and Location Card -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="bg-[#7B0015] text-white p-4">
+                <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
+                    <div class="bg-[#7B0015] p-4 text-white">
                         <h2 class="font-bold text-lg">Informasi Event</h2>
                     </div>
                     <div class="p-4 space-y-3">
@@ -163,8 +163,8 @@
 
                 <!-- Stage Layout -->
                 @if($event->stage_layout && $event->has_stage_layout)
-                <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="bg-[#7B0015] text-white p-4">
+                <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
+                    <div class="bg-[#7B0015] p-4 text-white">
                         <h2 class="font-bold text-lg">Layout Venue</h2>
                     </div>
                     <div class="p-4 relative">
@@ -182,8 +182,8 @@
                 @endif
 
                 <!-- Information Box -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="bg-[#7B0015] text-white p-4">
+                <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
+                    <div class="bg-[#7B0015] p-4 text-white">
                         <h2 class="font-bold text-lg">Informasi Pemesanan</h2>
                     </div>
                     <div class="p-4 space-y-3">
@@ -207,8 +207,8 @@
                 </div>
 
                 <!-- Share Event -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                    <div class="bg-[#7B0015] text-white p-4">
+                <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
+                    <div class="bg-[#7B0015] p-4 text-white">
                         <h2 class="font-bold text-lg">Bagikan Event</h2>
                     </div>
                     <div class="p-4 flex justify-center space-x-4">
@@ -228,7 +228,7 @@
             <!-- Right Column - Description and Tickets -->
             <div class="md:col-span-2 space-y-6">
                 <!-- Description -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="rounded-2xl border border-[#E9E1D5] bg-white p-6 shadow-sm">
                     <h2 class="text-2xl font-bold mb-4">Deskripsi Event</h2>
                     <div class="prose prose-red max-w-none text-gray-700">
                         {!! nl2br(e($event->description)) !!}
@@ -260,7 +260,7 @@
 
                     <div x-data="{ selectedTicket: null }">
                         @foreach($event->tickets as $ticket)
-                            <div class="bg-white border-2 {{ $isSaleOpen ? 'border-red-700' : 'border-gray-300' }} rounded-xl overflow-hidden shadow-md mb-4">
+                            <div class="mb-4 overflow-hidden rounded-2xl border-2 bg-white shadow-sm {{ $isSaleOpen ? 'border-[#E15B3F]' : 'border-[#E9E1D5]' }}">
                                 <div class="p-6 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
                                     <div>
                                         <h3 class="text-xl font-bold {{ $isSaleOpen ? 'text-[#7B0015]' : 'text-gray-600' }}">{{ $ticket->ticket_class }}</h3>
@@ -355,7 +355,7 @@
                         @endforeach
 
                         <!-- Order Summary -->
-                        <div class="bg-white p-6 rounded-xl shadow-md space-y-4 sticky bottom-0 md:relative border-t-2 border-[#7B0015]">
+                        <div class="sticky bottom-0 space-y-4 rounded-2xl border-t-2 border-[#E15B3F] bg-white p-6 shadow-sm md:relative">
                             <h2 class="text-xl font-bold mb-2">Ringkasan Pesanan</h2>
                             <ul id="order-summary" class="text-gray-800 text-sm space-y-2">
                                 <li class="text-gray-500">Belum ada tiket dipilih.</li>

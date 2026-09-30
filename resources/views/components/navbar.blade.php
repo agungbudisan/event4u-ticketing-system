@@ -1,8 +1,9 @@
-<nav class="bg-[#7B0015] text-white py-4 shadow-md">
-    <div class="container mx-auto flex justify-between items-center px-6">
+<nav class="bg-[#211F1C] text-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4 sm:px-6">
         <!-- Logo -->
         <a href="{{ route('welcome') }}" class="flex items-center">
-            <h1 class="text-[#F7ECAC] text-2xl font-bold">Event4U</h1>
+            <span class="mr-2 h-2.5 w-2.5 rounded-full bg-[#E15B3F]"></span>
+            <h1 class="text-[#F8F4EC] text-2xl font-bold tracking-tight">Event4U</h1>
         </a>
 
         <!-- Mobile menu button -->
@@ -13,13 +14,13 @@
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-6">
-            <a href="{{ route('welcome') }}" class="text-[#F7ECAC] hover:text-white transition-colors">Home</a>
-            <a href="{{ route('events.index') }}" class="text-[#F7ECAC] hover:text-white transition-colors">Events</a>
+        <div class="hidden md:flex items-center space-x-2">
+            <a href="{{ route('welcome') }}" class="rounded-full px-4 py-2 text-[#F8F4EC]/80 hover:bg-white/10 hover:text-white transition-colors">Home</a>
+            <a href="{{ route('events.index') }}" class="rounded-full px-4 py-2 text-[#F8F4EC]/80 hover:bg-white/10 hover:text-white transition-colors">Events</a>
 
             <!-- Profile Dropdown -->
             <div class="relative" x-data="{ open: false }">
-                <button @click="open = !open" class="flex items-center text-[#F7ECAC] hover:text-white transition-colors focus:outline-none">
+                <button @click="open = !open" class="ml-2 flex items-center rounded-full border border-white/20 px-4 py-2 text-[#F8F4EC]/90 hover:bg-white/10 hover:text-white transition-colors focus:outline-none">
                     <span class="mr-1">
                         <i class="fas fa-user-circle text-xl"></i>
                     </span>

@@ -1,10 +1,10 @@
-<a href="{{ route('events.show', $event->id) }}" class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group block">
-    <div class="relative">
+<a href="{{ route('events.show', $event->id) }}" class="group block overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-[0_8px_30px_rgba(33,31,28,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(33,31,28,0.12)]">
+    <div class="relative overflow-hidden">
         @if($event->thumbnail)
             <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}"
-                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                class="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105">
         @else
-            <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+            <div class="flex h-52 w-full items-center justify-center bg-[#F1ECE3]">
                 <i class="fas fa-calendar-alt text-gray-400 text-4xl"></i>
             </div>
         @endif
@@ -15,25 +15,25 @@
             $isUpcoming = $now < $event->start_event;
             $isOngoing = $now >= $event->start_event && $now <= $event->end_event;
         @endphp
-        <div class="absolute top-4 right-4">
-            <span class="inline-block px-2 py-1 text-xs font-semibold rounded-md
-                {{ $isUpcoming ? 'bg-blue-600 text-white' : ($isOngoing ? 'bg-yellow-300 text-white' : 'bg-gray-600 text-white') }}">
+        <div class="absolute right-4 top-4">
+            <span class="inline-block rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm
+                {{ $isUpcoming ? 'bg-white/90 text-[#7B0015]' : ($isOngoing ? 'bg-[#E15B3F] text-white' : 'bg-[#211F1C]/80 text-white') }}">
                 {{ $isUpcoming ? 'Upcoming' : ($isOngoing ? 'Ongoing' : 'Past') }}
             </span>
         </div>
 
         <!-- Category Badge -->
-        <div class="absolute top-4 left-4">
-            <span class="inline-block bg-white/80 backdrop-blur-sm text-[#7B0015] text-xs px-2 py-1 rounded-md">
+        <div class="absolute left-4 top-4">
+            <span class="inline-block rounded-full bg-[#F8F4EC]/90 px-3 py-1 text-xs font-semibold text-[#7B0015] backdrop-blur-sm">
                 {{ $event->category->name ?? 'Event' }}
             </span>
         </div>
     </div>
 
     <div class="p-5">
-        <h3 class="font-bold text-xl mb-2 line-clamp-2 group-hover:text-[#7B0015] transition">{{ $event->title }}</h3>
+        <h3 class="mb-3 line-clamp-2 text-xl font-bold transition group-hover:text-[#7B0015]">{{ $event->title }}</h3>
 
-        <div class="flex flex-wrap text-sm text-gray-500 gap-4 mb-3">
+        <div class="mb-3 flex flex-wrap gap-3 text-sm text-gray-500">
             <div class="flex items-center">
                 <i class="fas fa-calendar-alt mr-2 text-[#7B0015]"></i>
                 <span>{{ date('d M Y', strtotime($event->start_event)) }}</span>
@@ -55,7 +55,7 @@
             $formattedMaxPrice = 'Rp' . number_format($maxPrice, 2, ',', '.');
         @endphp
 
-        <div class="flex justify-between items-center mt-4">
+        <div class="mt-5 flex items-center justify-between border-t border-[#E9E1D5] pt-4">
             <!-- Price range dengan format mata uang Rupiah yang benar -->
             <p class="font-bold text-[#7B0015]">
                 @if($minPrice == $maxPrice)

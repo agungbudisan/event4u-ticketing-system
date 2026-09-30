@@ -1,66 +1,179 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Event4U
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Event4U adalah aplikasi web untuk menemukan acara dan membeli tiket secara online. Aplikasi ini mendukung pembelian tiket oleh pengguna terdaftar maupun tamu, pembayaran melalui Midtrans, serta pengelolaan acara untuk administrator.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Untuk pengunjung dan pembeli
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Melihat daftar acara, detail acara, kategori, lokasi, dan jadwal penjualan.
+- Melihat pilihan tiket dan melakukan pemesanan sebagai tamu atau pengguna terdaftar.
+- Membayar pesanan melalui integrasi Midtrans.
+- Memeriksa status pembayaran dan pesanan.
+- Mengunduh e-ticket dalam format PDF dengan QR code.
+- Melihat riwayat pesanan dan mengelola profil setelah masuk ke akun.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Untuk administrator
 
-## Learning Laravel
+- Mengelola acara, kategori, dan tiket.
+- Mengatur informasi acara seperti deskripsi, lokasi, jadwal, thumbnail, dan layout panggung.
+- Melihat daftar pesanan dan pembayaran.
+- Memperbarui status pembayaran.
+- Melihat analitik penjualan per acara maupun seluruh acara.
+- Mengekspor laporan analitik ke Excel atau PDF.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Alur Pembelian
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Pengunjung memilih acara dan jenis tiket.
+2. Pengunjung mengisi data pemesan. Akun tidak wajib untuk pembelian tamu.
+3. Sistem membuat pesanan dengan batas waktu pembayaran.
+4. Pembayaran diproses melalui Midtrans.
+5. Setelah pembayaran berhasil, e-ticket dapat diunduh sebagai PDF.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Teknologi
 
-## Laravel Sponsors
+- PHP 8.2 atau lebih baru
+- Laravel 12
+- SQLite sebagai database bawaan konfigurasi lokal, atau database lain yang didukung Laravel
+- Vite, Tailwind CSS, dan Alpine.js
+- Midtrans untuk pembayaran
+- Simple Software QR Code untuk QR code pada e-ticket
+- Dompdf untuk PDF
+- Laravel Excel untuk ekspor laporan
+- Pest dan PHPUnit untuk pengujian
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Persyaratan
 
-### Premium Partners
+Pastikan perangkat telah memiliki:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- PHP >= 8.2
+- Composer
+- Node.js dan npm
+- Ekstensi PHP yang dibutuhkan Laravel, termasuk `pdo_sqlite` jika menggunakan SQLite
+- Kredensial akun Midtrans Sandbox untuk menguji pembayaran
 
-## Contributing
+## Instalasi Lokal
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Clone repositori lalu masuk ke direktori proyek:
 
-## Code of Conduct
+```bash
+git clone <url-repositori>
+cd Event4U
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Pasang dependensi backend dan frontend:
 
-## Security Vulnerabilities
+```bash
+composer install
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Siapkan environment aplikasi:
 
-## License
+```bash
+copy .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Perintah `copy` di atas digunakan pada Windows. Pada macOS atau Linux, gunakan `cp .env.example .env`.
+
+Secara default, aplikasi menggunakan SQLite. Buat file database jika belum tersedia, lalu jalankan migrasi dan seeder:
+
+```bash
+type nul > database\database.sqlite
+php artisan migrate --seed
+```
+
+Pada macOS atau Linux, gunakan `touch database/database.sqlite` sebagai pengganti `type nul > database\database.sqlite`.
+
+## Konfigurasi Environment
+
+Sesuaikan nilai berikut di `.env`:
+
+```dotenv
+APP_NAME=Event4U
+APP_URL=http://localhost
+
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+
+MIDTRANS_SERVER_KEY=your-server-key
+MIDTRANS_CLIENT_KEY=your-client-key
+MIDTRANS_MERCHANT_ID=your-merchant-id
+MIDTRANS_IS_PRODUCTION=false
+MIDTRANS_IS_SANITIZED=true
+MIDTRANS_IS_3DS=true
+```
+
+Gunakan kredensial Sandbox selama pengembangan. Endpoint notifikasi Midtrans harus dapat diakses oleh server Midtrans ketika menguji callback pembayaran. Jangan commit file `.env` atau kredensial pembayaran ke repositori.
+
+## Menjalankan Aplikasi
+
+Untuk menjalankan server Laravel dan Vite secara terpisah:
+
+Terminal pertama:
+
+```bash
+php artisan serve
+```
+
+Terminal kedua:
+
+```bash
+npm run dev
+```
+
+Aplikasi tersedia di `http://localhost:8000`.
+
+Alternatifnya, gunakan script development yang juga menjalankan queue listener dan log viewer:
+
+```bash
+composer run dev
+```
+
+Untuk membuat build frontend production:
+
+```bash
+npm run build
+```
+
+## Akun dan Hak Akses
+
+Sistem membedakan pengguna biasa dan administrator melalui atribut `role` pada tabel pengguna. Route administrator berada di bawah prefix `/admin` dan dilindungi middleware admin. Data awal aplikasi dapat dibuat melalui:
+
+```bash
+php artisan db:seed
+```
+
+Detail akun administrator sebaiknya disesuaikan pada seeder atau dibuat melalui mekanisme administrasi yang digunakan pada deployment.
+
+## Pengujian
+
+Jalankan seluruh test dengan:
+
+```bash
+php artisan test
+```
+
+Atau jalankan Pest secara langsung:
+
+```bash
+vendor/bin/pest
+```
+
+## Struktur Direktori Penting
+
+```text
+app/                 Logika aplikasi, controller, model, mail, dan export
+database/            Migrasi, factory, dan seeder
+resources/views/     Template antarmuka Blade
+resources/js/        Source JavaScript frontend
+resources/css/       Source stylesheet
+routes/web.php       Route publik, pengguna, tamu, dan administrator
+config/midtrans.php  Konfigurasi integrasi Midtrans
+tests/               Unit test dan feature test
+```
+
+## Lisensi
+
+Proyek ini menggunakan lisensi MIT.

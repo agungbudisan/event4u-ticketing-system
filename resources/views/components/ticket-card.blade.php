@@ -1,6 +1,6 @@
 @props(['ticket'])
 
-<div class="bg-white border-2 {{ now() >= $ticket->event->start_sale && now() <= $ticket->event->end_sale ? 'border-red-700' : 'border-gray-300' }} rounded-xl overflow-hidden shadow-md">
+<div class="overflow-hidden rounded-2xl border-2 bg-white shadow-sm {{ now() >= $ticket->event->start_sale && now() <= $ticket->event->end_sale ? 'border-[#E15B3F]' : 'border-[#E9E1D5]' }}">
     <div class="p-6 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
         <div>
             <h3 class="text-xl font-bold {{ now() >= $ticket->event->start_sale && now() <= $ticket->event->end_sale ? 'text-[#7B0015]' : 'text-gray-600' }}">{{ $ticket->ticket_class }}</h3>
@@ -38,7 +38,7 @@
 
             <div class="mt-3">
                 @if($ticket->quota_avail > 0 && $isSaleOpen)
-                    <a href="{{ route('guest.orders.create', $ticket) }}" class="inline-block py-2 px-4 bg-[#7B0015] hover:bg-[#950019] text-white font-medium rounded-lg transition duration-300">
+                    <a href="{{ route('guest.orders.create', $ticket) }}" class="inline-block rounded-full bg-[#7B0015] px-5 py-2.5 font-bold text-white transition duration-300 hover:bg-[#E15B3F]">
                         Beli Tiket
                     </a>
                 @elseif(!$isSaleOpen)

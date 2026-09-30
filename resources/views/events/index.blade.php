@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Event 4 U</title>
+    <title>Events - Event4U</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-[#F8F4EC] text-[#211F1C] font-sans">
 
     @include('components.navbar')
 
     <main class="container mx-auto mb-16 mt-8 px-4 lg:px-6">
         <!-- Header Section -->
-        <div class="relative rounded-xl overflow-hidden shadow-xl mb-8 bg-gradient-to-r from-[#7B0015] to-[#AF0020] h-48 md:h-64">
+        <div class="relative mb-10 h-52 overflow-hidden rounded-[2rem] bg-[#211F1C] shadow-[0_18px_50px_rgba(33,31,28,0.16)] md:h-64">
+            <div class="absolute right-0 top-0 h-64 w-64 translate-x-24 -translate-y-24 rounded-full border-[24px] border-[#E15B3F]/30"></div>
             <div class="absolute inset-0 flex items-center px-8 md:px-16">
                 <div class="max-w-3xl">
-                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Discover Events</h1>
+                    <p class="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#F7ECAC]">Explore the moment</p>
+                    <h1 class="mb-2 text-3xl font-bold text-white md:text-4xl">Discover Events</h1>
                     <p class="text-white/80 md:text-lg">Find and book your favorite events in just a few clicks</p>
                 </div>
             </div>
@@ -25,8 +27,8 @@
         <!-- Category Pills (Horizontal Scrollable) -->
         <div class="mb-6 overflow-hidden">
             <div class="flex items-center space-x-2 mb-2">
-                <h3 class="text-lg font-semibold">Categories:</h3>
-                <button id="show-all-categories" class="text-sm text-[#7B0015] hover:text-[#950019] font-medium flex items-center">
+                <h3 class="text-lg font-bold">Browse by category</h3>
+                <button id="show-all-categories" class="flex items-center text-sm font-semibold text-[#7B0015] hover:text-[#E15B3F]">
                     <span id="toggle-text">Show All</span>
                     <i class="fas fa-chevron-down ml-1" id="toggle-icon"></i>
                 </button>
@@ -34,13 +36,13 @@
 
             <div class="flex space-x-2 overflow-x-auto pb-3 scrollbar-hide" id="category-scroll">
                 <a href="{{ route('events.index') }}"
-                   class="flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium {{ !request('category_id') ? 'bg-[#7B0015] text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300' }}">
+                   class="flex-shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition {{ !request('category_id') ? 'border-[#7B0015] bg-[#7B0015] text-white' : 'border-[#E9E1D5] bg-white text-gray-800 hover:border-[#7B0015]' }}">
                     All Events
                 </a>
 
                 @foreach($categories->take(8) as $category)
                     <a href="{{ route('events.index', ['category_id' => $category->id]) }}"
-                       class="flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium {{ request('category_id') == $category->id ? 'bg-[#7B0015] text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300' }}">
+                       class="flex-shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition {{ request('category_id') == $category->id ? 'border-[#7B0015] bg-[#7B0015] text-white' : 'border-[#E9E1D5] bg-white text-gray-800 hover:border-[#7B0015]' }}">
                         {{ $category->name }}
                     </a>
                 @endforeach
@@ -101,14 +103,14 @@
         </div>
 
         <!-- Filter Section -->
-        <div class="bg-white rounded-xl shadow-md mb-8 p-4 md:p-6">
+        <div class="mb-8 rounded-2xl border border-[#E9E1D5] bg-white p-4 shadow-[0_8px_30px_rgba(33,31,28,0.05)] md:p-6">
             <form action="{{ route('events.index') }}" method="GET" class="space-y-4 md:space-y-0 md:flex md:flex-wrap md:items-end md:gap-4">
                 <!-- Search -->
                 <div class="md:w-1/3 lg:w-1/4 xl:w-1/5">
                     <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
                     <div class="relative">
                         <input type="text" id="search" name="search" value="{{ request('search') }}" placeholder="Search events..."
-                            class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#7B0015] focus:ring-[#7B0015]">
+                            class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-none focus:border-[#E15B3F] focus:ring-[#E15B3F]">
                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                             <i class="fas fa-search text-gray-400"></i>
                         </div>
@@ -119,7 +121,7 @@
                 <div class="md:w-1/4 lg:w-1/5">
                     <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
                     <select id="category_id" name="category_id"
-                        class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#7B0015] focus:ring-[#7B0015]">
+                        class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-none focus:border-[#E15B3F] focus:ring-[#E15B3F]">
                         <option value="">All Categories</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
@@ -133,7 +135,7 @@
                 <div class="md:w-1/4 lg:w-1/5">
                     <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
                     <select id="status" name="status"
-                        class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-[#7B0015] focus:ring-[#7B0015]">
+                        class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-none focus:border-[#E15B3F] focus:ring-[#E15B3F]">
                         <option value="">All Events</option>
                         <option value="upcoming" {{ request('status') == 'upcoming' ? 'selected' : '' }}>Upcoming</option>
                         <option value="ongoing" {{ request('status') == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
@@ -143,7 +145,7 @@
 
                 <!-- Filter Button -->
                 <div class="md:flex-grow">
-                    <button type="submit" class="w-full md:w-auto bg-[#7B0015] hover:bg-[#950019] text-white px-4 py-2 rounded-lg transition">
+                    <button type="submit" class="w-full rounded-full bg-[#7B0015] px-5 py-2.5 text-white transition hover:bg-[#E15B3F] md:w-auto">
                         <i class="fas fa-filter mr-2"></i>Filter Results
                     </button>
                 </div>
@@ -151,7 +153,7 @@
                 <!-- Clear Filter Button -->
                 @if(request('search') || request('category_id') || request('status'))
                 <div>
-                    <a href="{{ route('events.index') }}" class="inline-block w-full md:w-auto bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition text-center">
+                    <a href="{{ route('events.index') }}" class="inline-block w-full rounded-full bg-[#F1ECE3] px-5 py-2.5 text-center text-gray-800 transition hover:bg-[#E9E1D5] md:w-auto">
                         <i class="fas fa-times mr-2"></i>Clear Filters
                     </a>
                 </div>
@@ -178,7 +180,7 @@
                             All Events
                         @endif
                     </span>
-                    <span class="block h-1 w-24 bg-[#7B0015] mt-2"></span>
+                    <span class="mt-2 block h-1 w-14 bg-[#E15B3F]"></span>
                 </h2>
                 <div class="text-sm text-gray-500 mt-2 md:mt-0">
                     Found {{ $events->count() }} events
@@ -192,12 +194,12 @@
                     @endforeach
                 </div>
             @else
-                <div class="bg-white rounded-xl shadow p-12 text-center">
+                <div class="rounded-2xl border border-[#E9E1D5] bg-white p-12 text-center shadow-sm">
                     <div class="flex flex-col items-center justify-center">
                         <i class="fas fa-calendar-times text-gray-300 text-6xl mb-4"></i>
                         <h3 class="text-2xl font-bold text-gray-700 mb-2">No events found</h3>
                         <p class="text-gray-500 mb-6">We couldn't find any events matching your criteria.</p>
-                        <a href="{{ route('events.index') }}" class="bg-[#7B0015] hover:bg-[#950019] text-white px-4 py-2 rounded-lg transition">
+                        <a href="{{ route('events.index') }}" class="rounded-full bg-[#7B0015] px-5 py-2.5 text-white transition hover:bg-[#E15B3F]">
                             View All Events
                         </a>
                     </div>

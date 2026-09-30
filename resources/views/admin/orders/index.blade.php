@@ -7,7 +7,7 @@
 </div>
 
 <!-- Filter & Search -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow mb-6">
+<div class="mb-6 overflow-hidden rounded-2xl border border-[#D9DEE3] bg-white shadow-sm dark:bg-gray-800">
     <div class="p-4 border-b border-gray-200 dark:border-gray-700">
         <h3 class="text-lg font-medium text-gray-900 dark:text-white">Filter & Pencarian</h3>
     </div>
@@ -22,7 +22,7 @@
                         name="search"
                         id="search"
                         value="{{ request('search') }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                         placeholder="Cari berdasarkan ID, nama pembeli, email..."
                     >
                 </div>
@@ -33,7 +33,7 @@
                     <select
                         name="status"
                         id="status"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                     >
                         <option value="">Semua Status</option>
                         <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
@@ -49,7 +49,7 @@
                     <select
                         name="event_id"
                         id="event"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                     >
                         <option value="">Semua Acara</option>
                         @php
@@ -72,7 +72,7 @@
                         name="date_from"
                         id="date_from"
                         value="{{ request('date_from') }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                     >
                 </div>
 
@@ -83,7 +83,7 @@
                         name="date_to"
                         id="date_to"
                         value="{{ request('date_to') }}"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                     >
                 </div>
 
@@ -93,7 +93,7 @@
                     <select
                         name="sort"
                         id="sort"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                     >
                         <option value="latest" {{ request('sort') == 'latest' || !request('sort') ? 'selected' : '' }}>Terbaru</option>
                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Terlama</option>
@@ -104,11 +104,11 @@
             </div>
 
             <div class="flex justify-end">
-                <a href="{{ route('admin.orders.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3">
+                <a href="{{ route('admin.orders.index') }}" class="mr-3 inline-flex items-center rounded-full border border-[#D9DEE3] bg-white px-5 py-2.5 text-sm font-bold text-[#52606D] hover:bg-[#EEF1F4] focus:outline-none">
                     <i class="fas fa-times mr-2"></i>
                     Reset
                 </a>
-                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button type="submit" class="inline-flex items-center rounded-full border border-transparent bg-[#17212B] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#7B0015] focus:outline-none">
                     <i class="fas fa-search mr-2"></i>
                     Terapkan Filter
                 </button>
@@ -118,7 +118,7 @@
 </div>
 
 <!-- Orders Table -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow">
+<div class="overflow-hidden rounded-2xl border border-[#D9DEE3] bg-white shadow-sm dark:bg-gray-800">
     <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
         <h3 class="text-lg font-medium text-gray-900 dark:text-white">Daftar Pesanan</h3>
         <div class="text-sm text-gray-600 dark:text-gray-400">
@@ -128,7 +128,7 @@
 
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-50 dark:bg-gray-700">
+            <thead class="bg-[#EEF1F4] dark:bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                         ID/Referensi
@@ -184,21 +184,21 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         @php
-                            $statusClass = 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
+                            $statusClass = 'bg-[#E2E8F0] text-[#334155]';
                             $statusText = 'Belum Dibayar';
 
                             if(isset($order->payment)) {
                                 if($order->payment->status == 'pending') {
-                                    $statusClass = 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300';
+                                    $statusClass = 'bg-[#FEF3C7] text-[#92400E]';
                                     $statusText = 'Menunggu';
                                 } elseif($order->payment->status == 'completed') {
-                                    $statusClass = 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300';
+                                    $statusClass = 'bg-[#DCFCE7] text-[#166534]';
                                     $statusText = 'Selesai';
                                 } elseif($order->payment->status == 'cancelled') {
-                                    $statusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                    $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                     $statusText = 'Dibatalkan';
                                 } elseif($order->payment->status == 'failed') {
-                                    $statusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                    $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                     $statusText = 'Gagal';
                                 }
                             }

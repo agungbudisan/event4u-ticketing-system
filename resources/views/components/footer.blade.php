@@ -1,24 +1,24 @@
 <!-- Footer -->
-<footer class="bg-gradient-to-r from-[#7B0015] to-[#AF0020] text-white">
+<footer class="bg-[#211F1C] text-white">
     <!-- Contact Info Section -->
     <div class="container mx-auto px-4 py-12">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Company Info -->
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Event 4 U</h3>
+                    <h3 class="mb-4 text-2xl font-bold tracking-tight text-[#F7ECAC]">Event4U<span class="text-[#E15B3F]">.</span></h3>
                     <p class="text-white/80 mb-4">Discover your next favorite event. <br>Grab your seat in just a few clicks.</p>
                     <div class="flex space-x-4 mt-4">
-                        <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                        <a href="#" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-[#E15B3F] hover:bg-[#E15B3F]">
                             <i class="fab fa-facebook-f text-white"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                        <a href="#" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-[#E15B3F] hover:bg-[#E15B3F]">
                             <i class="fab fa-instagram text-white"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                        <a href="#" aria-label="Twitter" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-[#E15B3F] hover:bg-[#E15B3F]">
                             <i class="fab fa-twitter text-white"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                        <a href="#" aria-label="Youtube" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-[#E15B3F] hover:bg-[#E15B3F]">
                             <i class="fab fa-youtube text-white"></i>
                         </a>
                     </div>

@@ -3,20 +3,20 @@
 
     <div class="space-y-4 sm:space-y-6">
         <!-- Welcome Banner -->
-        <div class="bg-gradient-to-r from-[#7B0015] to-[#950019] overflow-hidden shadow-sm rounded-lg">
+        <div class="relative overflow-hidden rounded-2xl bg-[#211F1C] shadow-[0_12px_35px_rgba(33,31,28,0.15)]">
             <div class="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between">
                 <div class="flex flex-col sm:flex-row sm:items-center">
-                    <div class="h-12 w-12 rounded-full overflow-hidden">
+                    <div class="h-12 w-12 overflow-hidden rounded-full border-2 border-[#E15B3F]">
                         <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&color=FFFFFF&background=bg-white/20"
                          alt="{{ Auth::user()->name }}" class="h-full w-full object-cover">
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold text-white">Selamat datang, {{ Auth::user()->name }}!</h3>
+                        <h3 class="text-lg font-bold text-white">Selamat datang, {{ Auth::user()->name }}!</h3>
                         <p class="text-white/80">Terima kasih telah menggunakan layanan Event4U</p>
                     </div>
                 </div>
                 <div class="mt-4 sm:mt-0">
-                    <a href="{{ route('events.index') }}" class="inline-flex items-center px-4 py-2 bg-white text-[#7B0015] rounded-lg font-medium text-sm hover:bg-gray-100 transition-colors">
+                    <a href="{{ route('events.index') }}" class="inline-flex items-center rounded-full bg-[#F7ECAC] px-5 py-2.5 text-sm font-bold text-[#211F1C] transition-colors hover:bg-white">
                         <i class="fas fa-ticket-alt mr-2"></i>
                         Jelajahi Event
                     </a>
@@ -27,7 +27,7 @@
         <!-- Quick Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <!-- Orders Stats -->
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+            <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
                 <div class="p-4 sm:p-5">
                     <div class="flex items-center justify-between">
                         <div>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-2 border-t border-gray-200">
+                <div class="border-t border-[#E9E1D5] bg-[#F8F4EC] px-4 py-2">
                     <a href="{{ route('orders.index') }}" class="text-sm font-medium text-[#7B0015] hover:text-[#950019] flex items-center">
                         Lihat semua pesanan
                         <i class="fas fa-arrow-right ml-1 text-xs"></i>
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Upcoming Events -->
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+            <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
                 <div class="p-4 sm:p-5">
                     <div class="flex items-center justify-between">
                         <div>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-2 border-t border-gray-200">
+                <div class="border-t border-[#E9E1D5] bg-[#F8F4EC] px-4 py-2">
                     <a href="#upcoming-events" class="text-sm font-medium text-[#7B0015] hover:text-[#950019] flex items-center">
                         Lihat jadwal acara
                         <i class="fas fa-arrow-right ml-1 text-xs"></i>
@@ -106,7 +106,7 @@
             </div>
 
             <!-- Active Tickets -->
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+            <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
                 <div class="p-4 sm:p-5">
                     <div class="flex items-center justify-between">
                         <div>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-2 border-t border-gray-200">
+                <div class="border-t border-[#E9E1D5] bg-[#F8F4EC] px-4 py-2">
                     <a href="{{ route('orders.index') }}" class="text-sm font-medium text-[#7B0015] hover:text-[#950019] flex items-center">
                         Lihat e-ticket
                         <i class="fas fa-arrow-right ml-1 text-xs"></i>
@@ -140,7 +140,7 @@
             </div>
 
             <!-- Completed Events -->
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+            <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
                 <div class="p-4 sm:p-5">
                     <div class="flex items-center justify-between">
                         <div>
@@ -186,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-2 border-t border-gray-200">
+                <div class="border-t border-[#E9E1D5] bg-[#F8F4EC] px-4 py-2">
                     <a href="#" class="text-sm font-medium text-[#7B0015] hover:text-[#950019] flex items-center">
                         Lihat riwayat event
                         <i class="fas fa-arrow-right ml-1 text-xs"></i>
@@ -196,8 +196,8 @@
         </div>
 
         <!-- Recent Orders -->
-        <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-            <div class="border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center justify-between">
+        <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
+            <div class="flex items-center justify-between border-b border-[#E9E1D5] px-4 py-4 sm:px-6">
                 <div class="flex items-center">
                     <i class="fas fa-receipt text-[#7B0015] mr-2"></i>
                     <h3 class="text-base sm:text-lg font-medium text-gray-900">Pesanan Terbaru</h3>
@@ -283,8 +283,8 @@
         </div>
 
         <!-- Upcoming Events -->
-        <div id="upcoming-events" class="bg-white overflow-hidden shadow-sm rounded-lg">
-            <div class="border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center">
+        <div id="upcoming-events" class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm">
+            <div class="flex items-center border-b border-[#E9E1D5] px-4 py-4 sm:px-6">
                 <i class="fas fa-calendar-alt text-[#7B0015] mr-2"></i>
                 <h3 class="text-base sm:text-lg font-medium text-gray-900">Acara yang Akan Datang</h3>
             </div>

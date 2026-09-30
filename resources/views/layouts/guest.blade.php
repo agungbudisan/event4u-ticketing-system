@@ -7,9 +7,8 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     </head>
-    <body class="bg-gray-100 text-gray-900">
+    <body class="bg-[#F8F4EC] text-[#211F1C]">
         <div class="w-full h-full">
             {{ $slot }}
         </div>

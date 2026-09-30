@@ -7,17 +7,17 @@
         <p class="text-sm text-gray-500 dark:text-gray-400">Anda dapat membuat, mengedit, dan menghapus tiket untuk acara ini</p>
     </div>
     <div class="flex space-x-2">
-        <a href="{{ route('admin.tickets.create', $event) }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+        <a href="{{ route('admin.tickets.create', $event) }}" class="inline-flex items-center rounded-full bg-[#7B0015] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#E15B3F]">
             <i class="fas fa-plus mr-2"></i> Tambah Tiket
         </a>
-        <a href="{{ route('events.show', $event) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
+        <a href="{{ route('events.show', $event) }}" class="inline-flex items-center rounded-full bg-[#F1ECE3] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-[#211F1C] transition hover:bg-[#E9E1D5]">
             <i class="fas fa-arrow-left mr-2"></i> Kembali
         </a>
     </div>
 </div>
 
 <!-- Event Info Card -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 mb-6">
+<div class="mb-6 rounded-2xl border border-[#D9DEE3] bg-white p-4 shadow-sm dark:bg-gray-800">
     <div class="flex flex-col md:flex-row md:items-center">
         <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-4">
             <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}" class="w-32 h-32 object-cover rounded-lg">
@@ -43,7 +43,7 @@
 </div>
 
 <!-- Ticket List -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+<div class="overflow-hidden rounded-2xl border border-[#D9DEE3] bg-white shadow-sm dark:bg-gray-800">
     <div class="p-4 border-b dark:border-gray-700">
         <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Daftar Tiket</h2>
     </div>
@@ -51,7 +51,7 @@
     @if($tickets->count() > 0)
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead class="bg-gray-50 dark:bg-gray-700">
+                <thead class="bg-[#EEF1F4] dark:bg-gray-700">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jenis Tiket</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Deskripsi</th>
@@ -95,7 +95,7 @@
                             @endif
 
                             <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1.5 mt-2">
-                                <div class="bg-indigo-600 dark:bg-indigo-400 h-1.5 rounded-full" style="width: {{ $salePercentage }}%"></div>
+                                <div class="h-1.5 rounded-full bg-[#E15B3F]" style="width: {{ $salePercentage }}%"></div>
                             </div>
                             <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ $sold }}/{{ $ticket->quota_avail }} ({{ number_format($salePercentage, 1) }}%)</div>
                         </td>

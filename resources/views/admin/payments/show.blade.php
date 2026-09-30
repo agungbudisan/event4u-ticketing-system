@@ -50,20 +50,20 @@
                         <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Status</dt>
                         <dd class="mt-1">
                             @php
-                                $statusClass = 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
+                                $statusClass = 'bg-[#E2E8F0] text-[#334155]';
                                 $statusIcon = 'fa-question-circle';
 
                                 if($payment->status === 'pending') {
-                                    $statusClass = 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300';
+                                    $statusClass = 'bg-[#FEF3C7] text-[#92400E]';
                                     $statusIcon = 'fa-clock';
                                 } elseif($payment->status === 'completed') {
-                                    $statusClass = 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300';
+                                    $statusClass = 'bg-[#DCFCE7] text-[#166534]';
                                     $statusIcon = 'fa-check-circle';
                                 } elseif($payment->status === 'cancelled') {
-                                    $statusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                    $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                     $statusIcon = 'fa-times-circle';
                                 } elseif($payment->status === 'failed') {
-                                    $statusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                    $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                     $statusIcon = 'fa-exclamation-circle';
                                 }
                             @endphp

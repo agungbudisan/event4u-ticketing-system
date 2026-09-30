@@ -1,5 +1,5 @@
-<x-app-layout>
-    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-50">
+    <x-app-layout>
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-[#F8F4EC]">
         <!-- Sidebar backdrop (mobile only) -->
         <div x-show="sidebarOpen"
              x-transition:enter="transition-opacity ease-linear duration-200"
@@ -43,8 +43,8 @@
         <!-- Page content -->
         <div class="flex flex-col flex-1 w-full overflow-hidden">
             <!-- Top navigation -->
-            <div class="bg-white shadow z-10 relative">
-                <div class="flex items-center justify-between h-16 px-4 border-b border-gray-200">
+            <div class="relative z-10 border-b border-[#E9E1D5] bg-[#F8F4EC] shadow-sm">
+                <div class="flex h-16 items-center justify-between border-b border-[#E9E1D5] px-4">
                     <!-- Mobile menu button and logo -->
                     <div class="flex items-center">
                         <button @click="sidebarOpen = true" class="md:hidden text-gray-500 hover:text-gray-900 focus:outline-none">
@@ -53,16 +53,16 @@
                         </button>
 
                         <a href="{{ route('welcome') }}" class="ml-4 md:hidden flex items-center">
-                            <div class="h-8 w-8 rounded-full bg-[#7B0015] flex items-center justify-center">
+                            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-[#E15B3F]">
                                 <i class="fas fa-ticket-alt text-white text-sm"></i>
                             </div>
-                            <span class="ml-2 text-lg font-semibold text-gray-900">Event4U</span>
+                            <span class="ml-2 text-lg font-semibold text-[#211F1C]">Event4U</span>
                         </a>
                     </div>
 
                     <!-- Page title -->
                     <div class="hidden md:block">
-                        <h1 class="text-xl font-semibold text-gray-900">@yield('page-title', 'Dashboard')</h1>
+                        <h1 class="text-xl font-bold text-[#211F1C]">@yield('page-title', 'Dashboard')</h1>
                     </div>
 
                     <!-- Right section with button -->
@@ -110,7 +110,7 @@
             </div>
 
             <!-- Main content -->
-            <main class="flex-1 overflow-y-auto bg-gray-50 p-4 sm:p-6">
+            <main class="flex-1 overflow-y-auto bg-[#F8F4EC] p-4 sm:p-6">
                 {{ $slot }}
             </main>
         </div>

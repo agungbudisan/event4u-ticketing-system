@@ -4,7 +4,7 @@
     <div class="space-y-6">
         <div class="flex justify-between items-center">
             <h1 class="text-xl md:text-2xl font-bold text-gray-900">Pesanan Saya</h1>
-            <a href="{{ route('events.index') }}" class="py-2 px-4 bg-[#7B0015] hover:bg-[#950019] text-white font-medium rounded-lg transition duration-300 flex items-center">
+            <a href="{{ route('events.index') }}" class="flex items-center rounded-full bg-[#7B0015] px-5 py-2.5 font-bold text-white transition duration-300 hover:bg-[#E15B3F]">
                 <i class="fas fa-ticket-alt mr-2"></i> Cari Event
             </a>
         </div>
@@ -22,15 +22,15 @@
         @endif
 
         <!-- Filter dan Sorting -->
-        <div class="bg-white rounded-lg shadow-sm p-4">
+        <div class="rounded-2xl border border-[#E9E1D5] bg-white p-4 shadow-sm">
             <form action="{{ route('orders.index') }}" method="GET" class="flex flex-col md:flex-row gap-4">
                 <div class="flex-1">
                     <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari Event</label>
-                    <input type="text" id="search" name="search" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B0015]" placeholder="Masukkan nama event" value="{{ request('search') }}">
+                    <input type="text" id="search" name="search" class="w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] px-3 py-2.5 focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F]" placeholder="Masukkan nama event" value="{{ request('search') }}">
                 </div>
                 <div>
                     <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status Pembayaran</label>
-                    <select id="status" name="status" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B0015]">
+                    <select id="status" name="status" class="w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] px-3 py-2.5 focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F]">
                         <option value="">Semua Status</option>
                         <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
                         <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Sukses</option>
@@ -40,7 +40,7 @@
                 </div>
                 <div>
                     <label for="sort" class="block text-sm font-medium text-gray-700 mb-1">Urutkan</label>
-                    <select id="sort" name="sort" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#7B0015]">
+                    <select id="sort" name="sort" class="w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] px-3 py-2.5 focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F]">
                         <option value="latest" {{ request('sort') == 'latest' || !request('sort') ? 'selected' : '' }}>Terbaru</option>
                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Terlama</option>
                         <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Harga Tertinggi</option>
@@ -48,7 +48,7 @@
                     </select>
                 </div>
                 <div class="flex items-end">
-                    <button type="submit" class="px-4 py-2 bg-gray-800 hover:bg-black text-white font-medium rounded-md transition duration-300">
+                    <button type="submit" class="rounded-full bg-[#211F1C] px-5 py-2.5 font-bold text-white transition duration-300 hover:bg-[#7B0015]">
                         <i class="fas fa-search mr-1"></i> Filter
                     </button>
                 </div>
@@ -70,7 +70,7 @@
             <!-- Daftar Pesanan -->
             <div class="space-y-4">
                 @foreach($orders as $order)
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+                    <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm transition hover:shadow-md">
                         <div class="border-b border-gray-200">
                             <div class="flex justify-between items-center p-4">
                                 <span class="text-sm text-gray-500">ID Pesanan: #{{ $order->id }}</span>
@@ -130,7 +130,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="bg-gray-50 rounded-lg p-3 mb-3">
+                                    <div class="mb-3 rounded-xl bg-[#F8F4EC] p-3">
                                         <div class="flex justify-between text-sm mb-1">
                                             <span>{{ $order->ticket->ticket_class }}</span>
                                             <span>{{ $order->quantity }} × Rp {{ number_format($order->ticket->price, 0, ',', '.') }}</span>
@@ -161,12 +161,12 @@
 
                                 <!-- Action Buttons -->
                                 <div class="md:ml-4 mt-4 md:mt-0 flex md:flex-col gap-2">
-                                    <a href="{{ route('orders.show', $order) }}" class="px-4 py-2 bg-gray-800 hover:bg-black text-white text-sm font-medium rounded-lg text-center w-full whitespace-nowrap">
+                                    <a href="{{ route('orders.show', $order) }}" class="w-full whitespace-nowrap rounded-full bg-[#211F1C] px-4 py-2 text-center text-sm font-bold text-white hover:bg-[#7B0015]">
                                         Detail Pesanan
                                     </a>
 
                                     @if($order->payment && $order->payment->status === 'completed')
-                                        <a href="{{ route('orders.download-ticket', $order) }}" class="px-4 py-2 bg-[#7B0015] hover:bg-[#950019] text-white text-sm font-medium rounded-lg text-center w-full flex items-center justify-center whitespace-nowrap">
+                                        <a href="{{ route('orders.download-ticket', $order) }}" class="flex w-full items-center justify-center whitespace-nowrap rounded-full bg-[#7B0015] px-4 py-2 text-sm font-bold text-white hover:bg-[#E15B3F]">
                                             <i class="fas fa-download mr-1"></i> E-Ticket
                                         </a>
                                     @elseif(!$order->payment || $order->payment->status === 'pending')

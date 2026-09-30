@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Kelola Acara</h1>
-    <a href="{{ route('admin.events.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+    <a href="{{ route('admin.events.create') }}" class="inline-flex items-center rounded-full bg-[#7B0015] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#E15B3F]">
         <i class="fas fa-plus mr-2"></i> Tambah Acara
     </a>
 </div>
@@ -22,7 +22,7 @@
 @endif --}}
 
 <!-- Filter and Search -->
-<form action="{{ route('admin.events.index') }}" method="GET" class="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+<form action="{{ route('admin.events.index') }}" method="GET" class="mb-6 rounded-2xl border border-[#E9E1D5] bg-white p-4 shadow-sm dark:bg-gray-800">
     <div class="flex flex-col md:flex-row gap-4">
         <div class="flex-1">
             <label for="search" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cari Acara</label>
@@ -35,7 +35,7 @@
                     name="search"
                     id="search"
                     value="{{ request('search') }}"
-                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md leading-5 bg-white dark:bg-gray-700 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 dark:text-white sm:text-sm"
+                    class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F] sm:text-sm"
                     placeholder="Cari berdasarkan judul, lokasi..."
                 >
             </div>
@@ -45,7 +45,7 @@
             <select
                 name="category_id"
                 id="category_id"
-                class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm rounded-md bg-white dark:bg-gray-700 dark:text-white"
+                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] py-2 pl-3 pr-10 text-base focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F] sm:text-sm"
             >
                 <option value="">Semua Kategori</option>
                 @foreach($categories as $category)
@@ -58,7 +58,7 @@
             <select
                 name="status"
                 id="status"
-                class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm rounded-md bg-white dark:bg-gray-700 dark:text-white"
+                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] py-2 pl-3 pr-10 text-base focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F] sm:text-sm"
             >
                 <option value="">Semua Status</option>
                 <option value="upcoming" {{ request('status') == 'upcoming' ? 'selected' : '' }}>Mendatang</option>
@@ -67,11 +67,11 @@
             </select>
         </div>
         <div class="flex items-end">
-            <button type="submit" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+            <button type="submit" class="inline-flex items-center rounded-full bg-[#211F1C] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#7B0015]">
                 <i class="fas fa-filter mr-2"></i> Filter
             </button>
             @if(request('search') || request('category_id') || request('status'))
-                <a href="{{ route('admin.events.index') }}" class="ml-2 inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                <a href="{{ route('admin.events.index') }}" class="ml-2 inline-flex items-center rounded-full bg-[#F1ECE3] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-[#211F1C] transition hover:bg-[#E9E1D5]">
                     <i class="fas fa-times mr-2"></i> Reset
                 </a>
             @endif
@@ -85,10 +85,10 @@
 </form>
 
 <!-- Events Table -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+<div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm dark:bg-gray-800">
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-50 dark:bg-gray-700">
+            <thead class="bg-[#F8F4EC] dark:bg-gray-700">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Judul</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kategori</th>
@@ -136,14 +136,14 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         @php
                             $now = now();
-                            $class = 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300';
+                            $class = 'bg-[#E2E8F0] text-[#334155]';
                             $text = 'Selesai';
 
                             if ($event->start_event > $now) {
-                                $class = 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
+                                $class = 'bg-[#DBEAFE] text-[#1E3A8A]';
                                 $text = 'Mendatang';
                             } elseif ($event->end_event > $now) {
-                                $class = 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
+                                $class = 'bg-[#DCFCE7] text-[#166534]';
                                 $text = 'Berlangsung';
                             }
 
@@ -153,13 +153,13 @@
 
                             if ($now < $event->start_sale) {
                                 $saleStatus = 'Penjualan belum dimulai';
-                                $saleClass = 'text-yellow-600 dark:text-yellow-400';
+                                $saleClass = 'font-semibold text-[#92400E]';
                             } elseif ($now >= $event->start_sale && $now <= $event->end_sale) {
                                 $saleStatus = 'Penjualan dibuka';
-                                $saleClass = 'text-green-600 dark:text-green-400';
+                                $saleClass = 'font-semibold text-[#166534]';
                             } else {
                                 $saleStatus = 'Penjualan ditutup';
-                                $saleClass = 'text-red-600 dark:text-red-400';
+                                $saleClass = 'font-semibold text-[#991B1B]';
                             }
                         @endphp
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $class }}">

@@ -36,6 +36,7 @@ class Payment extends Model
     protected $casts = [
         'payment_date' => 'datetime',
         'expires_at' => 'datetime',
+        'payment_data' => 'array',
     ];
 
 

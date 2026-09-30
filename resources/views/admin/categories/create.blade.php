@@ -5,12 +5,12 @@
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">
         Tambah Kategori Baru
     </h1>
-    <a href="{{ route('admin.categories.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
+    <a href="{{ route('admin.categories.index') }}" class="inline-flex items-center rounded-full bg-[#F1ECE3] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-[#211F1C] transition hover:bg-[#E9E1D5]">
         <i class="fas fa-arrow-left mr-2"></i> Kembali
     </a>
 </div>
 
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+<div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm dark:bg-gray-800">
     <div class="p-6">
         <form
             action="{{ route('admin.categories.store') }}"
@@ -67,7 +67,7 @@
                         type="text"
                         name="name"
                         id="name"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
                         required
                     >
                     <p x-ref="nameError" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -84,11 +84,11 @@
                     <div class="mt-1 flex items-center">
                         <template x-if="previewImage">
                             <div class="mr-3 relative">
-                                <img :src="previewImage" alt="Preview" class="h-16 w-16 object-cover rounded-lg border border-gray-300 dark:border-gray-600">
+                                <img :src="previewImage" alt="Preview" class="h-16 w-16 rounded-xl border border-[#D9DEE3] object-cover">
                                 <button
                                     type="button"
                                     @click="previewImage = ''; document.getElementById('icon').value = '';"
-                                    class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 focus:outline-none"
+                                    class="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#B7372B] p-1 text-xs text-white hover:bg-red-700 focus:outline-none"
                                 >
                                     <i class="fas fa-times"></i>
                                 </button>
@@ -100,7 +100,7 @@
                             id="icon"
                             @change="handleImageUpload"
                             accept="image/*"
-                            class="block text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 dark:file:bg-indigo-900 dark:file:text-indigo-300 hover:file:bg-indigo-100 dark:hover:file:bg-indigo-800"
+                            class="block text-sm text-gray-500 file:mr-4 file:rounded-full file:border-0 file:bg-[#F7ECAC] file:px-4 file:py-2 file:font-semibold file:text-[#7B0015] hover:file:bg-[#E9E1D5]"
                             required
                         >
                     </div>
@@ -120,7 +120,7 @@
                     name="description"
                     id="description"
                     rows="4"
-                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                    class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
                 ></textarea>
                 @error('description')
                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -128,13 +128,13 @@
             </div>
 
             <!-- Preview Kategori -->
-            <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="mt-6 rounded-xl bg-[#F8F4EC] p-4">
                 <h3 class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Preview Kategori</h3>
-                <div class="flex items-center p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
+                <div class="flex items-center rounded-xl border border-[#D9DEE3] bg-white p-4 dark:bg-gray-800">
                     <div x-show="previewImage" class="flex-shrink-0">
-                        <img :src="previewImage" alt="Icon kategori" class="h-12 w-12 object-cover rounded-lg">
+                        <img :src="previewImage" alt="Icon kategori" class="h-12 w-12 rounded-lg object-cover">
                     </div>
-                    <div x-show="!previewImage" class="flex-shrink-0 bg-gray-200 dark:bg-gray-600 h-12 w-12 rounded-lg flex items-center justify-center">
+                    <div x-show="!previewImage" class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-[#D9DEE3] dark:bg-gray-600">
                         <i class="fas fa-image text-gray-400 dark:text-gray-500"></i>
                     </div>
                     <div class="ml-4">
@@ -148,7 +148,7 @@
             <div class="mt-6 flex justify-end">
                 <button
                     type="submit"
-                    class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                    class="inline-flex items-center rounded-full border border-transparent bg-[#7B0015] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#E15B3F] focus:outline-none"
                 >
                     <i class="fas fa-save mr-2"></i> Simpan Kategori
                 </button>

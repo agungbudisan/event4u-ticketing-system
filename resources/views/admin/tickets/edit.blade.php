@@ -3,13 +3,13 @@
 @section('content')
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">Edit Tiket: {{ $ticket->ticket_class }}</h1>
-    <a href="{{ route('admin.tickets.index', $ticket->event) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
+    <a href="{{ route('admin.tickets.index', $ticket->event) }}" class="inline-flex items-center rounded-full bg-[#F1ECE3] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-[#211F1C] transition hover:bg-[#E9E1D5]">
         <i class="fas fa-arrow-left mr-2"></i> Kembali
     </a>
 </div>
 
 <!-- Event Info Card -->
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 mb-6">
+<div class="mb-6 rounded-2xl border border-[#E9E1D5] bg-white p-4 shadow-sm dark:bg-gray-800">
     <div class="flex items-center">
         <div class="flex-shrink-0 mr-4">
             <img src="{{ asset('storage/' . $ticket->event->thumbnail) }}" alt="{{ $ticket->event->title }}" class="w-16 h-16 object-cover rounded-lg">
@@ -60,7 +60,7 @@
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(this.price * this.quota);
         }
     }"
-    class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden"
+    class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm dark:bg-gray-800"
 >
     <div class="p-6">
         <form action="{{ route('admin.tickets.update', $ticket) }}" method="POST">
@@ -76,7 +76,7 @@
                         type="text"
                         name="ticket_class"
                         id="ticket_class"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
                         required
                     >
                     <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Contoh: VIP, Regular, Early Bird, dll.</p>
@@ -97,7 +97,7 @@
                             type="number"
                             name="price"
                             id="price"
-                            class="block w-full pl-10 pr-12 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] pl-10 pr-12 focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
                             placeholder="0"
                             required
                             :readonly="hasOrders"
@@ -118,7 +118,7 @@
                         type="number"
                         name="quota_avail"
                         id="quota_avail"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
                         :min="soldQuantity"
                         required
                     >
@@ -136,7 +136,7 @@
                 <!-- Preview Total Pendapatan -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimasi Pendapatan</label>
-                    <div class="mt-1 p-3 bg-gray-50 dark:bg-gray-700 rounded-md">
+                    <div class="mt-1 rounded-xl bg-[#F8F4EC] p-3">
                         <div class="flex flex-col gap-1">
                             <p class="text-sm text-gray-500 dark:text-gray-400">
                                 Total pendapatan jika semua tiket terjual:

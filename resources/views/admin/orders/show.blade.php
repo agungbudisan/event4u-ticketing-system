@@ -38,21 +38,21 @@
                         <div>
                             <p class="text-sm text-gray-500 dark:text-gray-400">Status Pembayaran</p>
                             @php
-                                $statusClass = 'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-300';
+                                $statusClass = 'bg-[#E2E8F0] text-[#334155]';
                                 $statusText = 'Belum Bayar';
 
                                 if(isset($order->payment)) {
                                     if($order->payment->status == 'pending') {
-                                        $statusClass = 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300';
+                                        $statusClass = 'bg-[#FEF3C7] text-[#92400E]';
                                         $statusText = 'Menunggu';
                                     } elseif($order->payment->status == 'completed') {
-                                        $statusClass = 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300';
+                                        $statusClass = 'bg-[#DCFCE7] text-[#166534]';
                                         $statusText = 'Selesai';
                                     } elseif($order->payment->status == 'cancelled') {
-                                        $statusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                        $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                         $statusText = 'Dibatalkan';
                                     } elseif($order->payment->status == 'failed') {
-                                        $statusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                        $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                         $statusText = 'Gagal';
                                     }
                                 }
@@ -96,7 +96,7 @@
                         <form action="{{ route('admin.payments.updateStatus', $order->payment) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            
+
                             <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Ubah Status Pembayaran</label>
                             <div class="flex space-x-2">
                                 <select name="status" id="status" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm">
@@ -219,16 +219,16 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
                                         @php
-                                            $paymentStatusClass = 'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-300';
+                                            $paymentStatusClass = 'bg-[#E2E8F0] text-[#334155]';
 
                                             if($order->payment->status == 'pending') {
-                                                $paymentStatusClass = 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300';
+                                                $paymentStatusClass = 'bg-[#FEF3C7] text-[#92400E]';
                                             } elseif($order->payment->status == 'completed') {
-                                                $paymentStatusClass = 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-300';
+                                                $paymentStatusClass = 'bg-[#DCFCE7] text-[#166534]';
                                             } elseif($order->payment->status == 'cancelled') {
-                                                $paymentStatusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                                $paymentStatusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                             } elseif($order->payment->status == 'failed') {
-                                                $paymentStatusClass = 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-300';
+                                                $paymentStatusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                             }
                                         @endphp
                                         <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $paymentStatusClass }}">

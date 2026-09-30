@@ -21,6 +21,15 @@ class TicketController extends Controller
         return view('admin.tickets.index', compact('tickets', 'event'));
     }
 
+    public function eventSelector()
+    {
+        $events = Event::with(['category', 'tickets'])
+            ->orderBy('start_event')
+            ->get();
+
+        return view('admin.tickets.events', compact('events'));
+    }
+
     public function create(Event $event)
     {
         return view('admin.tickets.create', compact('event'));

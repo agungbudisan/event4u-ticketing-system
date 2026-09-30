@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.tickets.index', ['event' => 1]) }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.tickets.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
+                        <a href="{{ route('admin.tickets.events') }}" class="flex items-center rounded-xl p-3 text-white/65 transition hover:bg-white/10 hover:text-white {{ request()->routeIs('admin.tickets.*') ? 'bg-[#E15B3F] text-white shadow-lg' : '' }}">
                             <i class="fas fa-ticket-alt h-6 w-6 text-white/70 transition duration-75"></i>
                             <span class="ml-3">Kelola Tiket</span>
                         </a>

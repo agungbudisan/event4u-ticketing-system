@@ -111,6 +111,8 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
     });
 
+    Route::get('/tickets', [TicketController::class, 'eventSelector'])->name('tickets.events');
+
     // Ticket Resource (edit, update, destroy operations)
     Route::resource('tickets', TicketController::class)->only(['edit', 'update', 'destroy']);
 

@@ -767,6 +767,20 @@ class PaymentController extends Controller
 
         // Ambil status pembayaran terbaru
         $payment = $order->payment;
+
+        // Auto-mark expired jika batas waktu pembayaran sudah lewat
+        if ($payment && $payment->status === 'pending') {
+            $paymentExpired = $payment->expires_at && now()->isAfter($payment->expires_at);
+            $orderExpired = $order->expires_at && now()->isAfter($order->expires_at);
+
+            if ($paymentExpired || $orderExpired) {
+                $payment->status = 'expired';
+                $payment->save();
+
+                Log::info("Payment {$payment->id} marked as expired via checkOrderStatus for order {$order->id}");
+            }
+        }
+
         $status = $payment ? $payment->status : 'pending';
 
         // Data waktu kedaluwarsa terbaru
@@ -906,6 +920,20 @@ class PaymentController extends Controller
 
         // Ambil status pembayaran terbaru
         $payment = $order->payment;
+
+        // Auto-mark expired jika batas waktu pembayaran sudah lewat
+        if ($payment && $payment->status === 'pending') {
+            $paymentExpired = $payment->expires_at && now()->isAfter($payment->expires_at);
+            $orderExpired = $order->expires_at && now()->isAfter($order->expires_at);
+
+            if ($paymentExpired || $orderExpired) {
+                $payment->status = 'expired';
+                $payment->save();
+
+                Log::info("Payment {$payment->id} marked as expired via checkOrderStatusGuest for order {$order->id}");
+            }
+        }
+
         $status = $payment ? $payment->status : 'pending';
 
         // Data waktu kedaluwarsa terbaru

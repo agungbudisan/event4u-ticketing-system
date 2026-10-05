@@ -97,14 +97,14 @@
 
                             <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Ubah Status Pembayaran</label>
                             <div class="flex space-x-2">
-                                <select name="status" id="status" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm">
+                                <select name="status" id="status" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm">
                                     <option value="pending" {{ $order->payment->status == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
                                     <option value="completed" {{ $order->payment->status == 'completed' ? 'selected' : '' }}>Pembayaran Berhasil</option>
                                     <option value="cancelled" {{ $order->payment->status == 'cancelled' ? 'selected' : '' }}>Pembayaran Dibatalkan</option>
                                     <option value="failed" {{ $order->payment->status == 'failed' ? 'selected' : '' }}>Pembayaran Gagal</option>
                                     <option value="expired" {{ $order->payment->status == 'expired' ? 'selected' : '' }}>Pembayaran Kedaluwarsa</option>
                                 </select>
-                                <button type="submit" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button type="submit" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E15B3F]/30">
                                     Simpan
                                 </button>
                             </div>
@@ -195,28 +195,28 @@
                 <div>
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Riwayat Pembayaran</h2>
                     <div class="bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden">
-                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+                        <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-600">
                             <thead class="bg-gray-100 dark:bg-gray-800">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tanggal</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Metode</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jumlah</th>
+                                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tanggal</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Metode</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jumlah</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-600">
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                            <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-100 dark:divide-gray-600">
+                                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                         @if(is_string($order->order_date))
                                         {{ \Carbon\Carbon::parse($order->order_date)->format('d M Y, H:i') }}
                                         @else
                                             {{ $order->order_date->format('d M Y, H:i') }}
                                         @endif
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                                         {{ $order->payment->method }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm">
                                         @php
                                             $paymentStatusClass = 'bg-[#E2E8F0] text-[#334155]';
 
@@ -236,7 +236,7 @@
                                             {{ $order->payment->status_label }}
                                         </span>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-right">
+                                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-right">
                                         Rp {{ number_format($order->total_price, 0, ',', '.') }}
                                     </td>
                                 </tr>

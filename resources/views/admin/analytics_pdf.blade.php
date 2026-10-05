@@ -47,7 +47,7 @@
 
     <table class="table mt-2">
         <thead>
-            <tr>
+            <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
                 <th class="bg-gray-100 px-4 py-2">Kategori Tiket</th>
                 <th class="bg-gray-100 px-4 py-2">Tiket Terjual</th>
                 <th class="bg-gray-100 px-4 py-2">Pendapatan</th>
@@ -57,7 +57,7 @@
         </thead>
         <tbody>
             @foreach($ticketTypes as $ticket)
-            <tr>
+            <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
                 <td class="px-4 py-2">{{ $ticket['name'] }}</td>
                 <td class="px-4 py-2 text-center">{{ $ticket['sold'] }}</td>
                 <td class="px-4 py-2 text-right">Rp{{ number_format($ticket['revenue'], 0, ',', '.') }}</td>

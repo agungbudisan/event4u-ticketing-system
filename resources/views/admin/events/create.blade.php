@@ -227,7 +227,7 @@
                             type="text"
                             name="title"
                             id="title"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                         <p x-ref="errorTitle" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -243,7 +243,7 @@
                             x-model="category_id"
                             name="category_id"
                             id="category_id"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                             <option value="">Pilih Kategori</option>
@@ -265,7 +265,7 @@
                             type="text"
                             name="location"
                             id="location"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                         <p x-ref="errorLocation" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -322,7 +322,7 @@
                             type="datetime-local"
                             name="start_event"
                             id="start_event"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                         <p x-ref="errorStartEvent" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -339,7 +339,7 @@
                             type="datetime-local"
                             name="end_event"
                             id="end_event"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                         <p x-ref="errorEndEvent" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -356,7 +356,7 @@
                             type="datetime-local"
                             name="start_sale"
                             id="start_sale"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                         <p x-ref="errorStartSale" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -373,7 +373,7 @@
                             type="datetime-local"
                             name="end_sale"
                             id="end_sale"
-                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                             required
                         >
                         <p x-ref="errorEndSale" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -454,7 +454,7 @@
                         name="description"
                         id="description"
                         rows="6"
-                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                        class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                         required
                     ></textarea>
                     <p x-ref="errorDescription" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -473,7 +473,7 @@
                                 name="has_stage_layout"
                                 type="checkbox"
                                 value="1"
-                                class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600"
+                                class="focus:ring-[#E15B3F]/30 h-4 w-4 text-indigo-600 border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600"
                                 @if(old('has_stage_layout', isset($event) ? $event->has_stage_layout : false)) checked @endif
                             >
                             <!-- Tambahkan input hidden untuk nilai false -->
@@ -611,7 +611,7 @@
                     <button
                         type="button"
                         @click="nextStep"
-                        class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                        class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-[#E15B3F]/30 focus:ring-offset-2 transition ease-in-out duration-150"
                     >
                         Selanjutnya <i class="fas fa-arrow-right ml-2"></i>
                     </button>

@@ -63,39 +63,39 @@
         <a href="{{ route('admin.events.index') }}" class="text-sm font-semibold text-[#7B0015] hover:text-[#E15B3F]">Lihat Semua</a>
     </div>
     <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-700">
             <thead class="bg-[#EEF1F4] dark:bg-gray-700">
-                <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Judul</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Kategori</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Lokasi</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tanggal Mulai</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Judul</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Kategori</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Lokasi</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tanggal Mulai</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                 @forelse ($recentEvents as $event)
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $event->title }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $event->category->name }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $event->location }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $event->start_event->format('d M Y, H:i') }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm font-medium">
                         <a href="{{ route('admin.events.show', $event) }}" class="mr-3 font-semibold text-[#7B0015] hover:text-[#E15B3F]">Detail</a>
                         <a href="{{ route('admin.events.edit', $event) }}" class="text-yellow-600 dark:text-yellow-500 hover:text-yellow-900 dark:hover:text-yellow-400">Edit</a>
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td colspan="5" class="px-6 py-5 text-center text-sm text-gray-500 dark:text-gray-400">
                         Tidak ada acara terbaru.
                     </td>
                 </tr>
@@ -113,39 +113,39 @@
         <a href="{{ route('admin.orders.index') }}" class="text-sm font-semibold text-[#7B0015] hover:text-[#E15B3F]">Lihat Semua</a>
     </div>
     <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-700">
             <thead class="bg-[#EEF1F4] dark:bg-gray-700">
-                <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acara</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tiket</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Pembeli</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Jumlah</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Total</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acara</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tiket</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Pembeli</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Jumlah</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Total</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                 @forelse ($recentOrders as $order)
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $order->ticket->event->title }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $order->ticket->name ?? $order->ticket->ticket_class }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">
                             {{ $order->uid ? ($order->user->name ?? 'User #'.$order->uid) : ($order->guest_name ?? $order->email) }}
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $order->quantity }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-900 dark:text-white">Rp {{ number_format($order->total_price, 0, ',', '.') }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         @php
                             $statusClass = 'gray';
                             $statusText = $order->payment ? $order->payment->status_label : 'Belum Dibayar';
@@ -176,13 +176,13 @@
                             {{ $statusText }}
                         </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm font-medium">
                         <a href="{{ route('admin.orders.show', $order) }}" class="font-semibold text-[#7B0015] hover:text-[#E15B3F]">Detail</a>
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td colspan="7" class="px-6 py-5 text-center text-sm text-gray-500 dark:text-gray-400">
                         Tidak ada pesanan terbaru.
                     </td>
                 </tr>

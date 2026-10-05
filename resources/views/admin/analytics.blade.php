@@ -21,7 +21,7 @@
 
     <!-- Event Selector -->
     <div class="w-full md:w-auto">
-        <select id="eventSelect" class="block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm" onchange="selectEvent(this.value)">
+        <select id="eventSelect" class="block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm" onchange="selectEvent(this.value)">
             <option value="">Pilih Acara</option>
             @foreach($events as $evt)
                 <option value="{{ $evt->id }}" {{ isset($event) && $event->id == $evt->id ? 'selected' : '' }}>
@@ -127,42 +127,42 @@
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Detail Penjualan Tiket</h2>
         </div>
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-700">
                 <thead class="bg-gray-50 dark:bg-gray-700">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jenis Tiket</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Harga</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tersedia</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Terjual</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Pendapatan</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Persentase</th>
+                    <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jenis Tiket</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Harga</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tersedia</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Terjual</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Pendapatan</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Persentase</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                     @foreach($event->tickets as $ticket)
                         @php
                             $sold = $ticket->orders->sum('quantity');
                             $revenue = $ticket->price * $sold;
                             $percentage = $ticket->quota_avail > 0 ? ($sold / $ticket->quota_avail) * 100 : 0;
                         @endphp
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                        <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                            <td class="px-6 py-5 whitespace-nowrap">
                                 <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $ticket->ticket_class }}</div>
                                 <div class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($ticket->description, 30) }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-5 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">Rp {{ number_format($ticket->price, 0, ',', '.') }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-5 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">{{ $ticket->quota_avail }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-5 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">{{ $sold }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-5 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 dark:text-white">Rp {{ number_format($revenue, 0, ',', '.') }}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td class="px-6 py-5 whitespace-nowrap">
                                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
                                     <div class="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-full" style="width: {{ $percentage }}%"></div>
                                 </div>

@@ -76,7 +76,7 @@
                         type="text"
                         name="ticket_class"
                         id="ticket_class"
-                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                         required
                     >
                     <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Contoh: VIP, Regular, Early Bird, dll.</p>
@@ -97,7 +97,7 @@
                             type="number"
                             name="price"
                             id="price"
-                            class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] pl-10 pr-12 focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                            class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] pl-10 pr-12 focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                             placeholder="0"
                             required
                             :readonly="hasOrders"
@@ -118,7 +118,7 @@
                         type="number"
                         name="quota_avail"
                         id="quota_avail"
-                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                         :min="soldQuantity"
                         required
                     >
@@ -155,7 +155,7 @@
                     name="description"
                     id="description"
                     rows="4"
-                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
+                    class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-[#E15B3F]/30 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm"
                     required
                 ></textarea>
                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Jelaskan detail tentang apa yang didapatkan dengan tiket ini</p>
@@ -238,7 +238,7 @@
             <div class="mt-6 flex justify-end">
                 <button
                     type="submit"
-                    class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                    class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-[#E15B3F]/30 focus:ring-offset-2 transition ease-in-out duration-150"
                 >
                     <i class="fas fa-save mr-2"></i> Perbarui Tiket
                 </button>

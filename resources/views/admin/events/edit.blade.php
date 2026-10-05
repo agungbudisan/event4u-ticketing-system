@@ -72,7 +72,7 @@
                                 name="title"
                                 id="title"
                                 value="{{ old('title', $event->title) }}"
-                                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                             @error('title')
@@ -86,7 +86,7 @@
                             <select
                                 name="category_id"
                                 id="category_id"
-                                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                                 <option value="">Pilih Kategori</option>
@@ -107,7 +107,7 @@
                                 name="location"
                                 id="location"
                                 value="{{ old('location', $event->location) }}"
-                                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                             @error('location')
@@ -163,7 +163,7 @@
                                 name="start_event"
                                 id="start_event"
                                 value="{{ old('start_event', $event->start_event ? $event->start_event->format('Y-m-d\TH:i') : '') }}"
-                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                             @error('start_event')
@@ -179,7 +179,7 @@
                                 name="end_event"
                                 id="end_event"
                                 value="{{ old('end_event', $event->end_event ? $event->end_event->format('Y-m-d\TH:i') : '') }}"
-                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                             @error('end_event')
@@ -195,7 +195,7 @@
                                 name="start_sale"
                                 id="start_sale"
                                 value="{{ old('start_sale', $event->start_sale ? $event->start_sale->format('Y-m-d\TH:i') : '') }}"
-                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                             @error('start_sale')
@@ -211,7 +211,7 @@
                                 name="end_sale"
                                 id="end_sale"
                                 value="{{ old('end_sale', $event->end_sale ? $event->end_sale->format('Y-m-d\TH:i') : '') }}"
-                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                                class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                                 required
                             >
                             @error('end_sale')
@@ -290,7 +290,7 @@
                             name="description"
                             id="description"
                             rows="6"
-                            class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                            class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-white shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                             required
                         >{{ old('description', $event->description) }}</textarea>
                         @error('description')

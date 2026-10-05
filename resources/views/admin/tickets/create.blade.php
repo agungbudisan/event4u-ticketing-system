@@ -51,7 +51,7 @@
                         name="ticket_class"
                         id="ticket_class"
                         value="{{ old('ticket_class') }}"
-                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                         required
                     >
                     <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Contoh: VIP, Regular, Early Bird, dll.</p>
@@ -73,7 +73,7 @@
                             name="price"
                             id="price"
                             value="{{ old('price', 0) }}"
-                            class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] pl-10 pr-12 focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                            class="block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] pl-10 pr-12 focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                             placeholder="0"
                             required
                         >
@@ -93,7 +93,7 @@
                         name="quota_avail"
                         id="quota_avail"
                         value="{{ old('quota_avail', 100) }}"
-                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                         min="1"
                         required
                     >
@@ -125,7 +125,7 @@
                     name="description"
                     id="description"
                     rows="4"
-                    class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                    class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                     required
                 >{{ old('description') }}</textarea>
                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Jelaskan detail tentang apa yang didapatkan dengan tiket ini</p>

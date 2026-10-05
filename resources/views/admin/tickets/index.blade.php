@@ -50,33 +50,33 @@
 
     @if($tickets->count() > 0)
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-700">
                 <thead class="bg-[#EEF1F4] dark:bg-gray-700">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jenis Tiket</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Deskripsi</th>
-                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Harga</th>
-                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kuota</th>
-                        <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                        <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
+                    <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jenis Tiket</th>
+                        <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Deskripsi</th>
+                        <th scope="col" class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Harga</th>
+                        <th scope="col" class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kuota</th>
+                        <th scope="col" class="px-6 py-4 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                        <th scope="col" class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                     @foreach($tickets as $ticket)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
+                    <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                        <td class="px-6 py-5 whitespace-nowrap">
                             <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $ticket->ticket_class }}</div>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-5">
                             <div class="text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($ticket->description, 50) }}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">
+                        <td class="px-6 py-5 whitespace-nowrap text-right">
                             <div class="text-sm font-medium text-gray-900 dark:text-white">Rp {{ number_format($ticket->price, 0, ',', '.') }}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right">
+                        <td class="px-6 py-5 whitespace-nowrap text-right">
                             <div class="text-sm text-gray-900 dark:text-white">{{ $ticket->quota_avail }}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                        <td class="px-6 py-5 whitespace-nowrap text-center">
                             @php
                                 $now = now();
                                 $isSaleActive = $event->start_sale <= $now && $event->end_sale >= $now;
@@ -99,7 +99,7 @@
                             </div>
                             <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">{{ $sold }}/{{ $ticket->quota_avail }} ({{ number_format($salePercentage, 1) }}%)</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <td class="px-6 py-5 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex justify-end space-x-2">
                                 <a href="{{ route('admin.tickets.edit', $ticket) }}" class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-900 dark:hover:text-yellow-300" title="Edit">
                                     <i class="fas fa-edit"></i>

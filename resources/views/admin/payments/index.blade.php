@@ -64,7 +64,7 @@
                         name="search"
                         id="search"
                         value="{{ request('search') }}"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                         placeholder="Cari berdasarkan ID, nama pembeli, email..."
                     >
                 </div>
@@ -75,7 +75,7 @@
                     <select
                         name="status"
                         id="status"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                     >
                         <option value="">Semua Status</option>
                         <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
@@ -92,7 +92,7 @@
                     <select
                         name="method"
                         id="method"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                     >
                         <option value="">Semua Metode</option>
                         <option value="transfer" {{ request('method') == 'transfer' ? 'selected' : '' }}>Transfer Bank</option>
@@ -107,7 +107,7 @@
                     <select
                         name="event_id"
                         id="event"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                     >
                         <option value="">Semua Acara</option>
                         @foreach($events as $event)
@@ -126,7 +126,7 @@
                         name="date_from"
                         id="date_from"
                         value="{{ request('date_from') }}"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                     >
                 </div>
 
@@ -137,7 +137,7 @@
                         name="date_to"
                         id="date_to"
                         value="{{ request('date_to') }}"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                     >
                 </div>
 
@@ -147,7 +147,7 @@
                     <select
                         name="sort"
                         id="sort"
-                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
+                        class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30"
                     >
                         <option value="latest" {{ request('sort') == 'latest' || !request('sort') ? 'selected' : '' }}>Terbaru</option>
                         <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Terlama</option>
@@ -158,7 +158,7 @@
             </div>
 
             <div class="flex justify-end">
-                <a href="{{ route('admin.payments.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-3">
+                <a href="{{ route('admin.payments.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E15B3F]/30 mr-3">
                     <i class="fas fa-times mr-2"></i>
                     Reset
                 </a>
@@ -181,29 +181,29 @@
     </div>
 
     <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-700">
             <thead class="bg-[#EEF1F4] dark:bg-gray-700">
-                <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acara</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Pembeli</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Metode</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Jumlah</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tanggal</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Acara</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Pembeli</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Metode</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Jumlah</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Tanggal</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                    <th scope="col" class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                 @forelse ($payments as $payment)
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                         #{{ $payment->id }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {{ $payment->order->ticket->event->title ?? 'N/A' }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900 dark:text-white">
                             {{ $payment->order->user->name ?? $payment->order->guest_name ?? 'N/A' }}
                         </div>
@@ -211,7 +211,7 @@
                             {{ $payment->order->email }}
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         @if($payment->method === 'transfer')
                             <span class="inline-flex items-center">
                                 <i class="fas fa-university mr-2"></i> Transfer Bank
@@ -228,13 +228,13 @@
                             {{ ucfirst($payment->method) }}
                         @endif
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                         Rp {{ number_format($payment->order->total_price, 0, ',', '.') }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                    <td class="px-6 py-5 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                         {{ $payment->created_at->format('d/m/Y H:i') }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         @php
                             $statusClass = 'bg-[#E2E8F0] text-[#334155]';
                             $statusIcon = 'fa-question-circle';
@@ -261,13 +261,13 @@
                             {{ $payment->status_label }}
                         </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="{{ route('admin.payments.show', $payment) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300">Detail</a>
+                    <td class="px-6 py-5 whitespace-nowrap text-right text-sm font-medium">
+                        <a href="{{ route('admin.payments.show', $payment) }}" class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 hover:border-[#E15B3F] hover:text-[#7B0015] dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 transition">Detail</a>
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="8" class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td colspan="8" class="px-6 py-5 text-center text-sm text-gray-500 dark:text-gray-400">
                         <div class="py-8">
                             <i class="fas fa-money-check text-4xl mb-3 text-gray-400 dark:text-gray-600"></i>
                             <p class="text-lg font-medium">Tidak ada pembayaran yang ditemukan</p>

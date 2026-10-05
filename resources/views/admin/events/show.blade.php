@@ -184,9 +184,9 @@
 
                     @if($event->tickets->count() > 0)
                         <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+                            <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-600">
                                 <thead class="bg-[#EEF1F4] dark:bg-gray-800">
-                                    <tr>
+                                    <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
                                         <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Jenis Tiket</th>
                                         <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Deskripsi</th>
                                         <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Harga</th>
@@ -195,13 +195,13 @@
                                         <th scope="col" class="px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-600">
+                                <tbody class="bg-white dark:bg-gray-700 divide-y divide-gray-100 dark:divide-gray-600">
                                     @foreach($event->tickets as $ticket)
                                     @php
                                         $sold = $ticket->orders->sum('quantity');
                                         $percentage = $ticket->quota_avail > 0 ? ($sold / $ticket->quota_avail) * 100 : 0;
                                     @endphp
-                                    <tr>
+                                    <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
                                         <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{{ $ticket->ticket_class }}</td>
                                         <td class="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">{{ Str::limit($ticket->description, 50) }}</td>
                                         <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 text-right">Rp {{ number_format($ticket->price, 0, ',', '.') }}</td>

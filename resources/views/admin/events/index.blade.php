@@ -87,22 +87,22 @@
 <!-- Events Table -->
 <div class="overflow-hidden rounded-2xl border border-[#E9E1D5] bg-white shadow-sm dark:bg-gray-800">
     <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <table class="min-w-full divide-y divide-gray-100 dark:divide-gray-700">
             <thead class="bg-[#F8F4EC] dark:bg-gray-700">
-                <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Judul</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kategori</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Lokasi</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tanggal Acara</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tiket</th>
-                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Judul</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kategori</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Lokasi</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tanggal Acara</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+                    <th scope="col" class="px-6 py-4 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tiket</th>
+                    <th scope="col" class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700">
                 @forelse($events as $index => $event)
                 <tr class="{{ $index % 2 == 0 ? '' : 'bg-gray-50 dark:bg-gray-700' }}">
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-10 w-10">
                                 @if($event->thumbnail)
@@ -119,13 +119,13 @@
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $event->category->name ?? 'N/A' }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">{{ $event->location }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">
                             {{ $event->start_event->format('d M Y, H:i') }}
                         </div>
@@ -133,7 +133,7 @@
                             s/d {{ $event->end_event->format('d M Y, H:i') }}
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         @php
                             $now = now();
                             $class = 'bg-[#E2E8F0] text-[#334155]';
@@ -169,7 +169,7 @@
                             {{ $saleStatus }}
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-5 whitespace-nowrap">
                         <div class="text-sm text-gray-500 dark:text-gray-400">
                             <span class="font-medium">{{ $event->tickets->count() }}</span> Jenis
                         </div>
@@ -183,24 +183,24 @@
                             {{ $totalSold }} Terjual
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <td class="px-6 py-5 whitespace-nowrap text-right text-sm font-medium">
                         <div class="flex justify-end space-x-3">
-                            <a href="{{ route('admin.tickets.index', $event) }}" class="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300" title="Kelola Tiket">
+                            <a href="{{ route('admin.tickets.index', $event) }}" class="text-gray-500 hover:text-[#7B0015] dark:text-gray-400 transition" title="Kelola Tiket">
                                 <i class="fas fa-ticket-alt"></i>
                             </a>
-                            <a href="{{ route('admin.analytics', $event->id) }}" class="text-purple-600 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300" title="Analytics">
+                            <a href="{{ route('admin.analytics', $event->id) }}" class="text-gray-500 hover:text-[#7B0015] dark:text-gray-400 transition" title="Analytics">
                                 <i class="fas fa-chart-line"></i>
                             </a>
-                            <a href="{{ route('admin.events.show', $event) }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300" title="Lihat Detail">
+                            <a href="{{ route('admin.events.show', $event) }}" class="text-gray-500 hover:text-[#7B0015] transition dark:text-gray-400" title="Lihat Detail">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a href="{{ route('admin.events.edit', $event) }}" class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-900 dark:hover:text-yellow-300" title="Edit">
+                            <a href="{{ route('admin.events.edit', $event) }}" class="text-gray-500 hover:text-[#E15B3F] dark:text-gray-400 transition" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('admin.events.destroy', $event) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus acara ini? Semua tiket dan order terkait juga akan terhapus.')">
+                                <button type="submit" class="text-gray-500 hover:text-red-600 dark:text-gray-400 transition" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus acara ini? Semua tiket dan order terkait juga akan terhapus.')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -208,8 +208,8 @@
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-700/40">
+                    <td colspan="7" class="px-6 py-5 text-center text-sm text-gray-500 dark:text-gray-400">
                         <div class="py-8">
                             <i class="fas fa-search text-4xl mb-3 text-gray-400 dark:text-gray-600"></i>
                             <p class="text-lg font-medium">Tidak ada acara yang ditemukan</p>

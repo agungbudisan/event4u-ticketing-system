@@ -67,7 +67,7 @@
                         type="text"
                         name="name"
                         id="name"
-                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                        class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                         required
                     >
                     <p x-ref="nameError" class="mt-1 text-sm text-red-600 dark:text-red-400"></p>
@@ -120,7 +120,7 @@
                     name="description"
                     id="description"
                     rows="4"
-                    class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F] sm:text-sm"
+                    class="mt-1 block w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] shadow-sm focus:border-[#E15B3F] focus:ring-2 focus:ring-[#E15B3F]/30 sm:text-sm"
                 ></textarea>
                 @error('description')
                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>

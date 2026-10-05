@@ -69,8 +69,16 @@
                                         $statusClass = 'bg-green-100 text-green-800';
                                         $statusText = 'Sukses';
                                     } elseif($order->payment->status === 'pending') {
-                                        $statusClass = 'bg-yellow-100 text-yellow-800';
-                                        $statusText = 'Menunggu Konfirmasi';
+                                        if ($order->isExpired()) {
+                                            $statusClass = 'bg-gray-100 text-gray-800';
+                                            $statusText = 'Kedaluwarsa';
+                                        } else {
+                                            $statusClass = 'bg-yellow-100 text-yellow-800';
+                                            $statusText = 'Menunggu Konfirmasi';
+                                        }
+                                    } elseif($order->payment->status === 'expired') {
+                                        $statusClass = 'bg-gray-100 text-gray-800';
+                                        $statusText = 'Kedaluwarsa';
                                     } elseif($order->payment->status === 'failed') {
                                         $statusClass = 'bg-red-100 text-red-800';
                                         $statusText = 'Gagal';
@@ -79,8 +87,13 @@
                                         $statusText = 'Dibatalkan';
                                     }
                                 } else {
-                                    $statusClass = 'bg-yellow-100 text-yellow-800';
-                                    $statusText = 'Belum Dibayar';
+                                    if ($order->isExpired()) {
+                                        $statusClass = 'bg-gray-100 text-gray-800';
+                                        $statusText = 'Kedaluwarsa';
+                                    } else {
+                                        $statusClass = 'bg-yellow-100 text-yellow-800';
+                                        $statusText = 'Belum Dibayar';
+                                    }
                                 }
                             @endphp
                             <span class="px-2 py-1 text-xs rounded-full {{ $statusClass }}">
@@ -124,10 +137,7 @@
                         </a>
 
                         @php
-                            $orderTime = $order->order_date;
-                            $now = now();
-                            $diffInHours = $now->diffInHours($orderTime);
-                            $paymentExpired = $diffInHours >= 1;
+                            $paymentExpired = $order->isExpired() || ($order->payment && $order->payment->expires_at && now()->isAfter($order->payment->expires_at));
                         @endphp
 
                         @if($order->payment && $order->payment->status === 'completed')

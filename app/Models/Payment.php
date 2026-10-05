@@ -46,6 +46,24 @@ class Payment extends Model
     }
 
     /**
+     * Mark all pending payments of a user as expired when their expiry time has passed.
+     */
+    public static function expirePendingForUser($userId): void
+    {
+        static::whereHas('order', function ($q) use ($userId) {
+                $q->where('user_id', $userId);
+            })
+            ->where('status', 'pending')
+            ->where(function ($q) {
+                $q->where('expires_at', '<', now())
+                  ->orWhereHas('order', function ($q2) {
+                      $q2->where('expires_at', '<', now());
+                  });
+            })
+            ->update(['status' => 'expired']);
+    }
+
+    /**
      * Get the order that owns the payment.
      */
     public function order()

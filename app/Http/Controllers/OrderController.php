@@ -27,6 +27,9 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+        // Auto-mark payment pending yang sudah lewat batas waktu sebagai expired
+        \App\Models\Payment::expirePendingForUser(Auth::id());
+
         $query = Order::where('user_id', Auth::id())
             ->with(['ticket.event', 'payment']);
 
@@ -262,6 +265,17 @@ class OrderController extends Controller
         // Check if order belongs to authenticated user
         if ($order->user_id !== Auth::id()) {
             abort(403, 'Unauthorized action.');
+        }
+
+        // Auto-mark payment pending yang sudah lewat batas waktu sebagai expired
+        if ($order->payment && $order->payment->status === 'pending') {
+            $paymentExpired = $order->payment->expires_at && now()->isAfter($order->payment->expires_at);
+            $orderExpired = $order->expires_at && now()->isAfter($order->expires_at);
+
+            if ($paymentExpired || $orderExpired) {
+                $order->payment->status = 'expired';
+                $order->payment->save();
+            }
         }
 
         return view('orders.show', compact('order'));

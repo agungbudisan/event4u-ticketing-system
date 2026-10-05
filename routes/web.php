@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,9 @@ Route::prefix('guest')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', function () {
+        // Auto-mark payment pending yang sudah lewat batas waktu sebagai expired
+        \App\Models\Payment::expirePendingForUser(Auth::id());
+
         return view('dashboard');
     })->name('dashboard');
 

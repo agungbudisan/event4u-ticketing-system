@@ -79,6 +79,11 @@
                                     $statusClass = 'bg-gray-100 text-gray-800';
                                     $statusText = 'Belum Dibayar';
 
+                                    if (!$order->payment && $order->isExpired()) {
+                                        $statusClass = 'bg-gray-100 text-gray-800';
+                                        $statusText = 'Pembayaran Kedaluwarsa';
+                                    }
+
                                     if($order->payment) {
                                         switch($order->payment->status) {
                                             case 'completed':
@@ -86,8 +91,17 @@
                                                 $statusText = 'Pembayaran Sukses';
                                                 break;
                                             case 'pending':
-                                                $statusClass = 'bg-yellow-100 text-yellow-800';
-                                                $statusText = 'Menunggu Pembayaran';
+                                                if ($order->isExpired()) {
+                                                    $statusClass = 'bg-gray-100 text-gray-800';
+                                                    $statusText = 'Pembayaran Kedaluwarsa';
+                                                } else {
+                                                    $statusClass = 'bg-yellow-100 text-yellow-800';
+                                                    $statusText = 'Menunggu Pembayaran';
+                                                }
+                                                break;
+                                            case 'expired':
+                                                $statusClass = 'bg-gray-100 text-gray-800';
+                                                $statusText = 'Pembayaran Kedaluwarsa';
                                                 break;
                                             case 'failed':
                                                 $statusClass = 'bg-red-100 text-red-800';
@@ -169,22 +183,14 @@
                                         <a href="{{ route('orders.download-ticket', $order) }}" class="flex w-full items-center justify-center whitespace-nowrap rounded-full bg-[#7B0015] px-4 py-2 text-sm font-bold text-white hover:bg-[#E15B3F]">
                                             <i class="fas fa-download mr-1"></i> E-Ticket
                                         </a>
-                                    @elseif(!$order->payment || $order->payment->status === 'pending')
-                                        @php
-                                            $orderTime = $order->order_date;
-                                            $now = now();
-                                            $diffInHours = $now->diffInHours($orderTime);
-                                        @endphp
-
-                                        @if($diffInHours < 1)
-                                            <a href="{{ route('payments.create', $order) }}" class="px-4 py-2 bg-[#7B0015] hover:bg-[#950019] text-white text-sm font-medium rounded-lg text-center w-full whitespace-nowrap">
+                                    @elseif((!$order->payment || $order->payment->status === 'pending') && !$order->isExpired())
+                                        <a href="{{ route('payments.create', $order) }}" class="px-4 py-2 bg-[#7B0015] hover:bg-[#950019] text-white text-sm font-medium rounded-lg text-center w-full whitespace-nowrap">
                                                 Bayar Sekarang
                                             </a>
-                                        @else
-                                            <span class="px-4 py-2 bg-gray-200 text-gray-500 text-sm font-medium rounded-lg text-center w-full whitespace-nowrap">
-                                                Pembayaran Kedaluwarsa
-                                            </span>
-                                        @endif
+                                    @elseif(($order->payment && $order->payment->status === 'expired') || ((!$order->payment || $order->payment->status === 'pending') && $order->isExpired()))
+                                        <span class="px-4 py-2 bg-gray-200 text-gray-500 text-sm font-medium rounded-lg text-center w-full whitespace-nowrap">
+                                            Pembayaran Kedaluwarsa
+                                        </span>
                                     @endif
                                 </div>
                             </div>

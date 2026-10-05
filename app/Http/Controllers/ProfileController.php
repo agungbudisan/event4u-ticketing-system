@@ -16,6 +16,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        // Auto-mark payment pending yang sudah lewat batas waktu sebagai expired
+        \App\Models\Payment::expirePendingForUser($request->user()->id);
+
         return view('profile.edit', [
             'user' => $request->user(),
         ]);

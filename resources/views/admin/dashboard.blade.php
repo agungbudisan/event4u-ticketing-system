@@ -148,18 +148,19 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         @php
                             $statusClass = 'gray';
-                            $statusText = 'Belum Bayar';
+                            $statusText = $order->payment ? $order->payment->status_label : 'Belum Dibayar';
 
                             if(isset($order->payment)) {
                                 if($order->payment->status == 'pending') {
                                     $statusClass = 'yellow';
-                                    $statusText = 'Menunggu';
                                 } elseif($order->payment->status == 'completed') {
                                     $statusClass = 'green';
-                                    $statusText = 'Selesai';
                                 } elseif($order->payment->status == 'failed') {
                                     $statusClass = 'red';
-                                    $statusText = 'Gagal';
+                                } elseif($order->payment->status == 'cancelled') {
+                                    $statusClass = 'red';
+                                } elseif($order->payment->status == 'expired') {
+                                    $statusClass = 'gray';
                                 }
                             }
                         @endphp

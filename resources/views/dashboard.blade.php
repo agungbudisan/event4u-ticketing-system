@@ -241,11 +241,23 @@
                                                 <span>
                                                     @if(isset($order->payment) && $order->payment->status == 'completed')
                                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                            <i class="fas fa-check-circle mr-1"></i> Pembayaran Selesai
+                                                            <i class="fas fa-check-circle mr-1"></i> Pembayaran Berhasil
                                                         </span>
-                                                    @elseif(isset($order->payment) && $order->payment->status == 'pending')
+                                                    @elseif(isset($order->payment) && $order->payment->status == 'pending' && !$order->isExpired())
                                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                                             <i class="fas fa-clock mr-1"></i> Menunggu Pembayaran
+                                                        </span>
+                                                    @elseif(isset($order->payment) && ($order->payment->status == 'expired' || ($order->payment->status == 'pending' && $order->isExpired())))
+                                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                            <i class="fas fa-hourglass-end mr-1"></i> Pembayaran Kedaluwarsa
+                                                        </span>
+                                                    @elseif(isset($order->payment) && $order->payment->status == 'failed')
+                                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                            <i class="fas fa-times-circle mr-1"></i> Pembayaran Gagal
+                                                        </span>
+                                                    @elseif(isset($order->payment) && $order->payment->status == 'cancelled')
+                                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                                            <i class="fas fa-ban mr-1"></i> Pembayaran Dibatalkan
                                                         </span>
                                                     @else
                                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">

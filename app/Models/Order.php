@@ -116,6 +116,19 @@ class Order extends Model
     }
 
     /**
+     * Get the consistent Indonesian label for this order's status.
+     */
+    public function getStatusLabelAttribute(): string
+    {
+        return match ($this->status) {
+            'paid' => 'Pembayaran Berhasil',
+            'expired' => 'Pembayaran Kedaluwarsa',
+            'failed' => 'Pembayaran Gagal',
+            default => $this->payment ? 'Menunggu Pembayaran' : 'Belum Dibayar',
+        };
+    }
+
+    /**
      * Get formatted remaining time until expiration.
      *
      * @return string|null

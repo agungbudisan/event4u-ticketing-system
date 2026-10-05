@@ -70,4 +70,19 @@ class Payment extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    /**
+     * Get the consistent Indonesian label for this payment's status.
+     */
+    public function getStatusLabelAttribute(): string
+    {
+        return match ($this->status) {
+            'pending' => 'Menunggu Pembayaran',
+            'completed' => 'Pembayaran Berhasil',
+            'failed' => 'Pembayaran Gagal',
+            'cancelled' => 'Pembayaran Dibatalkan',
+            'expired' => 'Pembayaran Kedaluwarsa',
+            default => ucfirst((string) $this->status),
+        };
+    }
 }

@@ -54,8 +54,8 @@
                     <div class="w-full max-w-md bg-gray-50 p-4 rounded-lg mb-4">
                         <div class="flex justify-between mb-1">
                             <span class="text-gray-600">Status Pembayaran:</span>
-                            <span class="px-2 py-1 text-xs rounded-full {{ $order->payment->status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
-                                {{ $order->payment->status === 'completed' ? 'Sukses' : 'Menunggu Konfirmasi' }}
+                            <span class="px-2 py-1 text-xs rounded-full {{ $order->payment->status === 'completed' ? 'bg-green-100 text-green-800' : ($order->payment->status === 'expired' || $order->isExpired() ? 'bg-gray-100 text-gray-800' : ($order->payment->status === 'failed' || $order->payment->status === 'cancelled' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800')) }}">
+                                {{ $order->isExpired() && $order->payment->status !== 'completed' ? 'Pembayaran Kedaluwarsa' : $order->payment->status_label }}
                             </span>
                         </div>
                         <div class="flex justify-between mb-1">

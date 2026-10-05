@@ -62,34 +62,27 @@
                             <span class="text-gray-600">Status Pembayaran:</span>
                             @php
                                 $statusClass = 'bg-yellow-100 text-yellow-800';
-                                $statusText = 'Menunggu Pembayaran';
+                                $statusText = $order->payment ? $order->payment->status_label : 'Menunggu Pembayaran';
 
                                 if($order->payment) {
                                     if($order->payment->status === 'completed') {
                                         $statusClass = 'bg-green-100 text-green-800';
-                                        $statusText = 'Sukses';
                                     } elseif($order->payment->status === 'pending') {
                                         if ($order->isExpired()) {
                                             $statusClass = 'bg-gray-100 text-gray-800';
-                                            $statusText = 'Kedaluwarsa';
-                                        } else {
-                                            $statusClass = 'bg-yellow-100 text-yellow-800';
-                                            $statusText = 'Menunggu Konfirmasi';
+                                            $statusText = 'Pembayaran Kedaluwarsa';
                                         }
                                     } elseif($order->payment->status === 'expired') {
                                         $statusClass = 'bg-gray-100 text-gray-800';
-                                        $statusText = 'Kedaluwarsa';
                                     } elseif($order->payment->status === 'failed') {
                                         $statusClass = 'bg-red-100 text-red-800';
-                                        $statusText = 'Gagal';
                                     } elseif($order->payment->status === 'cancelled') {
                                         $statusClass = 'bg-gray-100 text-gray-800';
-                                        $statusText = 'Dibatalkan';
                                     }
                                 } else {
                                     if ($order->isExpired()) {
                                         $statusClass = 'bg-gray-100 text-gray-800';
-                                        $statusText = 'Kedaluwarsa';
+                                        $statusText = 'Pembayaran Kedaluwarsa';
                                     } else {
                                         $statusClass = 'bg-yellow-100 text-yellow-800';
                                         $statusText = 'Belum Dibayar';
@@ -320,10 +313,7 @@
 
                     <!-- Payment Action Button for Pending/Failed Payments -->
                     @php
-                        $orderTime = $order->order_date;
-                        $now = now();
-                        $diffInHours = $now->diffInHours($orderTime);
-                        $paymentExpired = $diffInHours >= 1;
+                        $paymentExpired = $order->isExpired() || ($order->payment && $order->payment->expires_at && now()->isAfter($order->payment->expires_at));
                     @endphp
 
                     @if(!$paymentExpired && (!$order->payment || $order->payment->status === 'pending' || $order->payment->status === 'failed'))

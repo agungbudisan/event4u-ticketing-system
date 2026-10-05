@@ -33,9 +33,10 @@
                     <select id="status" name="status" class="w-full rounded-xl border-[#E9E1D5] bg-[#F8F4EC] px-3 py-2.5 focus:border-[#E15B3F] focus:outline-none focus:ring-[#E15B3F]">
                         <option value="">Semua Status</option>
                         <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
-                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Sukses</option>
-                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Gagal</option>
-                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
+                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Pembayaran Berhasil</option>
+                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Pembayaran Gagal</option>
+                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Pembayaran Dibatalkan</option>
+                        <option value="expired" {{ request('status') == 'expired' ? 'selected' : '' }}>Pembayaran Kedaluwarsa</option>
                     </select>
                 </div>
                 <div>
@@ -77,27 +78,16 @@
 
                                 @php
                                     $statusClass = 'bg-gray-100 text-gray-800';
-                                    $statusText = 'Belum Dibayar';
+                                    $statusText = $order->status_label;
 
-                                    if (!$order->payment && $order->isExpired()) {
-                                        $statusClass = 'bg-gray-100 text-gray-800';
-                                        $statusText = 'Pembayaran Kedaluwarsa';
-                                    }
-
-                                    if($order->payment) {
+                                    if ($order->payment) {
                                         switch($order->payment->status) {
                                             case 'completed':
                                                 $statusClass = 'bg-green-100 text-green-800';
-                                                $statusText = 'Pembayaran Sukses';
                                                 break;
                                             case 'pending':
-                                                if ($order->isExpired()) {
-                                                    $statusClass = 'bg-gray-100 text-gray-800';
-                                                    $statusText = 'Pembayaran Kedaluwarsa';
-                                                } else {
-                                                    $statusClass = 'bg-yellow-100 text-yellow-800';
-                                                    $statusText = 'Menunggu Pembayaran';
-                                                }
+                                                $statusClass = $order->isExpired() ? 'bg-gray-100 text-gray-800' : 'bg-yellow-100 text-yellow-800';
+                                                $statusText = $order->isExpired() ? 'Pembayaran Kedaluwarsa' : $order->payment->status_label;
                                                 break;
                                             case 'expired':
                                                 $statusClass = 'bg-gray-100 text-gray-800';
@@ -105,16 +95,18 @@
                                                 break;
                                             case 'failed':
                                                 $statusClass = 'bg-red-100 text-red-800';
-                                                $statusText = 'Pembayaran Gagal';
                                                 break;
                                             case 'cancelled':
                                                 $statusClass = 'bg-gray-100 text-gray-800';
-                                                $statusText = 'Dibatalkan';
                                                 break;
-                                            default:
-                                                $statusClass = 'bg-gray-100 text-gray-800';
-                                                $statusText = ucfirst($order->payment->status);
                                         }
+
+                                        if ($order->payment->status !== 'pending') {
+                                            $statusText = $order->payment->status_label;
+                                        }
+                                    } elseif ($order->isExpired()) {
+                                        $statusClass = 'bg-gray-100 text-gray-800';
+                                        $statusText = 'Pembayaran Kedaluwarsa';
                                     }
                                 @endphp
 

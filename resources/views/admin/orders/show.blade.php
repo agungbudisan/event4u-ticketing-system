@@ -39,21 +39,19 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400">Status Pembayaran</p>
                             @php
                                 $statusClass = 'bg-[#E2E8F0] text-[#334155]';
-                                $statusText = 'Belum Bayar';
+                                $statusText = $order->payment ? $order->payment->status_label : 'Belum Dibayar';
 
                                 if(isset($order->payment)) {
                                     if($order->payment->status == 'pending') {
                                         $statusClass = 'bg-[#FEF3C7] text-[#92400E]';
-                                        $statusText = 'Menunggu';
                                     } elseif($order->payment->status == 'completed') {
                                         $statusClass = 'bg-[#DCFCE7] text-[#166534]';
-                                        $statusText = 'Selesai';
                                     } elseif($order->payment->status == 'cancelled') {
                                         $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
-                                        $statusText = 'Dibatalkan';
                                     } elseif($order->payment->status == 'failed') {
                                         $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
-                                        $statusText = 'Gagal';
+                                    } elseif($order->payment->status == 'expired') {
+                                        $statusClass = 'bg-[#E2E8F0] text-[#334155]';
                                     }
                                 }
                             @endphp
@@ -100,10 +98,11 @@
                             <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Ubah Status Pembayaran</label>
                             <div class="flex space-x-2">
                                 <select name="status" id="status" class="block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400 sm:text-sm">
-                                    <option value="pending" {{ $order->payment->status == 'pending' ? 'selected' : '' }}>Menunggu</option>
-                                    <option value="completed" {{ $order->payment->status == 'completed' ? 'selected' : '' }}>Selesai</option>
-                                    <option value="cancelled" {{ $order->payment->status == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
-                                    <option value="failed" {{ $order->payment->status == 'failed' ? 'selected' : '' }}>Gagal</option>
+                                    <option value="pending" {{ $order->payment->status == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
+                                    <option value="completed" {{ $order->payment->status == 'completed' ? 'selected' : '' }}>Pembayaran Berhasil</option>
+                                    <option value="cancelled" {{ $order->payment->status == 'cancelled' ? 'selected' : '' }}>Pembayaran Dibatalkan</option>
+                                    <option value="failed" {{ $order->payment->status == 'failed' ? 'selected' : '' }}>Pembayaran Gagal</option>
+                                    <option value="expired" {{ $order->payment->status == 'expired' ? 'selected' : '' }}>Pembayaran Kedaluwarsa</option>
                                 </select>
                                 <button type="submit" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Simpan
@@ -229,10 +228,12 @@
                                                 $paymentStatusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                             } elseif($order->payment->status == 'failed') {
                                                 $paymentStatusClass = 'bg-[#FEE2E2] text-[#991B1B]';
+                                            } elseif($order->payment->status == 'expired') {
+                                                $paymentStatusClass = 'bg-[#E2E8F0] text-[#334155]';
                                             }
                                         @endphp
                                         <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full {{ $paymentStatusClass }}">
-                                            {{ ucfirst($order->payment->status) }}
+                                            {{ $order->payment->status_label }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300 text-right">

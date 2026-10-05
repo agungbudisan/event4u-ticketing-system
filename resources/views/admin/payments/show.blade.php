@@ -65,11 +65,14 @@
                                 } elseif($payment->status === 'failed') {
                                     $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                     $statusIcon = 'fa-exclamation-circle';
+                                } elseif($payment->status === 'expired') {
+                                    $statusClass = 'bg-[#E2E8F0] text-[#334155]';
+                                    $statusIcon = 'fa-hourglass-end';
                                 }
                             @endphp
                             <span class="px-2 py-1 inline-flex items-center text-xs leading-5 font-semibold rounded-full {{ $statusClass }}">
                                 <i class="fas {{ $statusIcon }} mr-1"></i>
-                                {{ ucfirst($payment->status) }}
+                                {{ $payment->status_label }}
                             </span>
                         </dd>
                     </div>
@@ -234,10 +237,11 @@
             <div>
                 <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Update Status Pembayaran</label>
                 <select name="status" id="status" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                    <option value="pending" {{ $payment->status === 'pending' ? 'selected' : '' }}>Menunggu</option>
-                    <option value="completed" {{ $payment->status === 'completed' ? 'selected' : '' }}>Selesai</option>
-                    <option value="cancelled" {{ $payment->status === 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
-                    <option value="failed" {{ $payment->status === 'failed' ? 'selected' : '' }}>Gagal</option>
+                    <option value="pending" {{ $payment->status === 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
+                    <option value="completed" {{ $payment->status === 'completed' ? 'selected' : '' }}>Pembayaran Berhasil</option>
+                    <option value="cancelled" {{ $payment->status === 'cancelled' ? 'selected' : '' }}>Pembayaran Dibatalkan</option>
+                    <option value="failed" {{ $payment->status === 'failed' ? 'selected' : '' }}>Pembayaran Gagal</option>
+                    <option value="expired" {{ $payment->status === 'expired' ? 'selected' : '' }}>Pembayaran Kedaluwarsa</option>
                 </select>
                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
                     <i class="fas fa-info-circle mr-1"></i> Jika status diubah menjadi "Selesai", tiket akan otomatis dikirim ke email pembeli.

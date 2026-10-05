@@ -37,9 +37,10 @@
                     >
                         <option value="">Semua Status</option>
                         <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
-                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Pembayaran Selesai</option>
-                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
-                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Gagal</option>
+                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Pembayaran Berhasil</option>
+                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Pembayaran Dibatalkan</option>
+                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Pembayaran Gagal</option>
+                        <option value="expired" {{ request('status') == 'expired' ? 'selected' : '' }}>Pembayaran Kedaluwarsa</option>
                     </select>
                 </div>
 
@@ -185,21 +186,19 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         @php
                             $statusClass = 'bg-[#E2E8F0] text-[#334155]';
-                            $statusText = 'Belum Dibayar';
+                            $statusText = $order->payment ? $order->payment->status_label : 'Belum Dibayar';
 
                             if(isset($order->payment)) {
                                 if($order->payment->status == 'pending') {
                                     $statusClass = 'bg-[#FEF3C7] text-[#92400E]';
-                                    $statusText = 'Menunggu';
                                 } elseif($order->payment->status == 'completed') {
                                     $statusClass = 'bg-[#DCFCE7] text-[#166534]';
-                                    $statusText = 'Selesai';
                                 } elseif($order->payment->status == 'cancelled') {
                                     $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
-                                    $statusText = 'Dibatalkan';
                                 } elseif($order->payment->status == 'failed') {
                                     $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
-                                    $statusText = 'Gagal';
+                                } elseif($order->payment->status == 'expired') {
+                                    $statusClass = 'bg-[#E2E8F0] text-[#334155]';
                                 }
                             }
                         @endphp

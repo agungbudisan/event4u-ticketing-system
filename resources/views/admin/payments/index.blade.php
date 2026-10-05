@@ -28,7 +28,7 @@
                 <i class="fas fa-check-circle text-white"></i>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Pembayaran Selesai</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Pembayaran Berhasil</p>
                 <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $totalCompleted }}</p>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <i class="fas fa-clock text-white"></i>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Menunggu Verifikasi</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Menunggu Pembayaran</p>
                 <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ $totalPending }}</p>
             </div>
         </div>
@@ -78,10 +78,11 @@
                         class="mt-1 block w-full rounded-xl border-[#D9DEE3] bg-[#F8FAFB] shadow-sm focus:border-[#E15B3F] focus:ring-[#E15B3F]"
                     >
                         <option value="">Semua Status</option>
-                        <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu</option>
-                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Selesai</option>
-                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Dibatalkan</option>
-                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Gagal</option>
+                        <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Menunggu Pembayaran</option>
+                        <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Pembayaran Berhasil</option>
+                        <option value="cancelled" {{ request('status') == 'cancelled' ? 'selected' : '' }}>Pembayaran Dibatalkan</option>
+                        <option value="failed" {{ request('status') == 'failed' ? 'selected' : '' }}>Pembayaran Gagal</option>
+                        <option value="expired" {{ request('status') == 'expired' ? 'selected' : '' }}>Pembayaran Kedaluwarsa</option>
                     </select>
                 </div>
 
@@ -250,11 +251,14 @@
                             } elseif($payment->status === 'failed') {
                                 $statusClass = 'bg-[#FEE2E2] text-[#991B1B]';
                                 $statusIcon = 'fa-exclamation-circle';
+                            } elseif($payment->status === 'expired') {
+                                $statusClass = 'bg-[#E2E8F0] text-[#334155]';
+                                $statusIcon = 'fa-hourglass-end';
                             }
                         @endphp
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full {{ $statusClass }}">
                             <i class="fas {{ $statusIcon }} mr-1"></i>
-                            {{ ucfirst($payment->status) }}
+                            {{ $payment->status_label }}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

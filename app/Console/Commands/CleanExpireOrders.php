@@ -17,30 +17,9 @@ class CleanExpiredOrders extends Command
     {
         DB::beginTransaction();
         try {
-            $expiredOrders = Order::where('expires_at', '<', now())
-                ->whereDoesntHave('payment', function ($query) {
-                    $query->where('status', 'completed');
-                })
-                ->orWhereHas('payment', function ($query) {
-                    $query->whereIn('status', ['pending', null])
-                        ->where('expires_at', '<', now());
-                })
-                ->get();
-
-            $count = $expiredOrders->count();
-            $this->info("Found {$count} expired orders to clean up.");
-
-            foreach ($expiredOrders as $order) {
-                // If there's a pending payment, mark it as expired
-                if ($order->payment && $order->payment->status === 'pending') {
-                    $order->payment->status = 'expired';
-                    $order->payment->save();
-                    $this->info("Marked payment {$order->payment->id} as expired for order {$order->id}");
-                }
-
-                // Log the expired order
-                Log::info("Order {$order->id} expired and has been cleaned up");
-            }
+            $count = \App\Models\Payment::expireOverdue();
+            $this->info("Marked {$count} pending payments as expired.");
+            Log::info("Expired orders cleanup completed: {$count} payments marked as expired");
 
             DB::commit();
             $this->info("Expired orders cleanup completed successfully.");

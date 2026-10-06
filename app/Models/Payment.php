@@ -64,6 +64,21 @@ class Payment extends Model
     }
 
     /**
+     * Mark all overdue pending payments (including guest orders) as expired.
+     */
+    public static function expireOverdue(): int
+    {
+        return static::where('status', 'pending')
+            ->where(function ($q) {
+                $q->where('expires_at', '<', now())
+                  ->orWhereHas('order', function ($q2) {
+                      $q2->where('expires_at', '<', now());
+                  });
+            })
+            ->update(['status' => 'expired']);
+    }
+
+    /**
      * Get the order that owns the payment.
      */
     public function order()

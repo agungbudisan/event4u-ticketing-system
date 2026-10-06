@@ -24,6 +24,9 @@ class DashboardController extends Controller
 
     public function index()
     {
+        // Auto-mark payment pending yang sudah lewat batas waktu sebagai expired (termasuk order guest)
+        Payment::expireOverdue();
+
         // Statistik dasar
         $totalEvents = Event::count();
         $upcomingEvents = Event::where('start_event', '>', now())->count();

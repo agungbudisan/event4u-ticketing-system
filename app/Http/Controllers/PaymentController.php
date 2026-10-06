@@ -29,6 +29,9 @@ class PaymentController extends Controller
      */
     public function adminIndex(Request $request)
     {
+        // Auto-mark payment pending yang sudah lewat batas waktu sebagai expired (termasuk order guest)
+        \App\Models\Payment::expireOverdue();
+
         $query = Payment::with(['order.ticket.event', 'order.user']);
 
         // Filter berdasarkan search query
